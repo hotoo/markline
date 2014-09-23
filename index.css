@@ -25,9 +25,12 @@
 .markline > .dates > ol > li {
   display: inline-block;
   box-sizing: border-box;
-  min-width: 99px;
+  width: 100px;
   border-left: 1px dashed rgba(255, 255, 255, 0.2);
   text-align: center;
+}
+.markline > .dates > ol > li:first-child {
+  margin-left: 30px;
 }
 
 .markline,
