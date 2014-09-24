@@ -91,7 +91,7 @@ Markline.prototype.render = function(){
   var head_dates = ['<div class="dates">', '<ol>'];
 
   for(var year=first_year; year<=last_year; year++){
-    head_dates.push('<li>', year, '</li>')
+    head_dates.push('<li><label>', year, '</label></li>')
   }
 
   head_dates.push('</ol>', '</div>');
@@ -148,7 +148,17 @@ Markline.prototype.render = function(){
   });
 
 
+  var me = this;
+
   this._element.addClass("markline");
+  this._element.on("scroll", function(evt){
+    var that = $(this);
+    var head = $(".dates", this);
+    head.css({"top": that.scrollTop()});
+
+    var groups = $(".groups > label", this);
+    groups.css({"left": that.scrollLeft() - 90});
+  });
   this._element.append(head_dates.join(""));
   this._element.append(body_events.join(""));
   $(".dates > ol > li", this._element).height($(".events", this.element).height() + offset_top);

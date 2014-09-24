@@ -4,7 +4,7 @@
 
 ---
 
-<link rel="stylesheet" href="../index.css" type="text/css" media="screen" charset="utf-8">
+<link rel="stylesheet" href="../timeline.css" type="text/css" media="screen" charset="utf-8">
 
 <div id="markline"></div>
 

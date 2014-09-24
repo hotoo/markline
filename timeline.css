@@ -32,6 +32,12 @@
 .markline > .dates > ol > li:first-child {
   margin-left: 30px;
 }
+.markline > .dates > ol > li > label,
+.markline > .groups > ol > li > label {
+  background-color: #444;
+  z-index: 200;
+  display: block;
+}
 
 .markline,
 .markline > .dates > ol > li {
@@ -44,6 +50,7 @@
   position: absolute;
   top: 30px;
   left: 0;
+  z-index: 101;
 }
 .markline > .events ol,
 .markline > .events ol > li {
