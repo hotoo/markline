@@ -3,10 +3,23 @@
 ---
 
 <link rel="stylesheet" href="../index.css" type="text/css" media="screen" charset="utf-8">
+
+<div id="markline"></div>
+
+````js
+seajs.use(['../markline'], function(Markline){
+  var markline = new Markline("#markline", "./hotoo.mdown");
+  markline.render();
+});
+````
+
+----
+
 <div id="demo"></div>
 
 ````javascript
 seajs.use('index', function(Markline) {
+return;
   var line = new Markline("#demo", {
     "default": [
       {

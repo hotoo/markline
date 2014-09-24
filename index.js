@@ -1,6 +1,5 @@
 
 var $ = require("jquery");
-var Event = require("evt");
 
 var offset_left = 30;
 var offset_top = 20;
@@ -10,11 +9,11 @@ var year_width = 100;
 function Markline (element, data) {
   this._element = $(element);
   this._data = data;
-  this._evt = new Event();
 }
 
 function calcLength(distance){
-  return (distance / (24 * 60 * 60 * 1000)) * year_width / 365.24;
+  var length = parseInt((distance / (24 * 60 * 60 * 1000)) * year_width / 365.24, 10);
+  return length < 8 ? 8 : length;
 }
 
 function isFunction(object){
@@ -40,10 +39,12 @@ Markline.prototype._process = function(data, handlers){
         handlers["line:start"].call(this, line);
       }
 
-      for(var j=0,l=line.events.length; j<l; j++){
+      if (line.events) {
+        for(var j=0,m=line.events.length; j<m; j++){
 
-        if (isFunction(handlers["event"])) {
-          handlers["event"].call(this, line);
+          if (isFunction(handlers["event"])) {
+            handlers["event"].call(this, line.events[j]);
+          }
         }
       }
 
@@ -98,6 +99,7 @@ Markline.prototype.render = function(){
 
   // BODY: events groups, and events.
   var body_events = ['<div class="events" id="events">'];
+  var current_line_offset_left = 0;
 
   this._process(this._data, {
     "group:start": function(group_name){
@@ -120,6 +122,7 @@ Markline.prototype.render = function(){
       var date_start = line["date-start"];
       var date_end = line["date-end"];
       var line_start = calcLength(date_start - min_date) + offset_left;
+      current_line_offset_left = date_start;
       var line_length = calcLength(date_end - date_start);
 
       body_events.push(
@@ -130,16 +133,15 @@ Markline.prototype.render = function(){
     "line:stop": function(line){
       body_events.push(
           '</ol>',
-          '<time>', line["date-start"], '</time>',
+          '<time>', line["date"], '</time>',
           '<label>', line.name, '</label>',
         '</li>'
       );
     },
 
     "event": function(event){
-      var event_name = event.name;
-      var event_start = 0;
-      body_events.push('<li style="left:', event_start, 'px;" title="', event_name, '"></li>');
+      var event_start = calcLength(event["date-start"] - current_line_offset_left) + offset_left;
+      body_events.push('<li style="left:', event_start, 'px;" title="', event.date, ' ', event.name, '"></li>');
     }
 
   });
@@ -148,6 +150,7 @@ Markline.prototype.render = function(){
   this._element.addClass("markline");
   this._element.append(head_dates.join(""));
   this._element.append(body_events.join(""));
+  $(".dates > ol > li", this._element).height($(".events", this.element).height() + offset_top);
 
 };
 
