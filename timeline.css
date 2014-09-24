@@ -15,6 +15,7 @@
   top: 0;
   left: 0;
   white-space:nowrap;
+  z-index: 200;
 }
 .markline > .dates > ol,
 .markline > .dates > ol > li {
@@ -34,8 +35,8 @@
 }
 .markline > .dates > ol > li > label,
 .markline > .groups > ol > li > label {
-  background-color: #444;
-  z-index: 200;
+  background-color: #333;
+  z-index: 201;
   display: block;
 }
 
@@ -78,6 +79,8 @@
   overflow: hidden;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
+  z-index: 200;
+  background-color: #333;
 }
 
 
