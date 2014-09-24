@@ -141,7 +141,8 @@ Markline.prototype.render = function(){
 
     "event": function(event){
       var event_start = calcLength(event["date-start"] - current_line_offset_left) + offset_left;
-      body_events.push('<li style="left:', event_start, 'px;" title="', event.date, ' ', event.name, '"></li>');
+      var event_width = calcLength(event["date-end"] - event["date-start"]);
+      body_events.push('<li style="left:', event_start, 'px;width:', event_width, 'px" title="', event.date, ' ', event.name, '"></li>');
     }
 
   });
