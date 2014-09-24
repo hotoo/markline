@@ -14,7 +14,7 @@
   },
   "licenses": "MIT",
   "spm": {
-    "main": "index.js",
+    "main": "markline.js",
     "dependencies": {
       "jquery": "2.1.1"
     },

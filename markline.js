@@ -1,5 +1,5 @@
 
-var Timeline = require("./index");
+var Timeline = require("./timeline");
 var $ = require("jquery");
 
 function Markline(element, markdown_filepath){

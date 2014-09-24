@@ -1,4 +1,6 @@
-# Demo
+# Markline Demo
+
+- order: 1
 
 ---
 
@@ -10,31 +12,5 @@
 seajs.use(['../markline'], function(Markline){
   var markline = new Markline("#markline", "./hotoo.mdown");
   markline.render();
-});
-````
-
-----
-
-<div id="demo"></div>
-
-````javascript
-seajs.use('index', function(Markline) {
-return;
-  var line = new Markline("#demo", {
-    "default": [
-      {
-        "name": "text",
-        "date-start": new Date("1983/08/08"),
-        "date-end": new Date("2010/08/18"),
-        "events": [
-          {
-            "date": new Date("2014/08/09"),
-            "name": "event 1"
-          }
-        ]
-      }
-    ]
-  });
-  line.render();
 });
 ````

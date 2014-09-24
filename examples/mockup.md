@@ -1,6 +1,8 @@
 
 # Static Demo
 
+- order: 3
+
 ----
 
 <link rel="stylesheet" href="../index.css" type="text/css" media="screen" charset="utf-8">
