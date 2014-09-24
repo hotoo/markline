@@ -12,8 +12,7 @@ function Markline (element, data) {
 }
 
 function calcLength(distance){
-  var length = parseInt((distance / (24 * 60 * 60 * 1000)) * year_width / 365.24, 10);
-  return length < 8 ? 8 : length;
+  return parseInt((distance / (24 * 60 * 60 * 1000)) * year_width / 365.24, 10);
 }
 
 function isFunction(object){
@@ -124,6 +123,7 @@ Markline.prototype.render = function(){
       var line_start = calcLength(date_start - min_date) + offset_left;
       current_line_offset_left = date_start;
       var line_length = calcLength(date_end - date_start);
+      if (line_length < 8) {line_length = 8;}
 
       body_events.push(
         '<li style="left:', line_start, 'px;">',
@@ -142,6 +142,7 @@ Markline.prototype.render = function(){
     "event": function(event){
       var event_start = calcLength(event["date-start"] - current_line_offset_left) + offset_left;
       var event_width = calcLength(event["date-end"] - event["date-start"]);
+      if (event_width < 8) {event_width = 8;}
       body_events.push('<li style="left:', event_start, 'px;width:', event_width, 'px" title="', event.date, ' ', event.name, '"></li>');
     }
 

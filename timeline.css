@@ -15,7 +15,6 @@
   top: 0;
   left: 0;
   white-space:nowrap;
-  z-index: 200;
 }
 .markline > .dates > ol,
 .markline > .dates > ol > li {
@@ -38,6 +37,9 @@
   background-color: #333;
   z-index: 201;
   display: block;
+}
+.markline > .dates > ol > li > label {
+  position: relative;
 }
 
 .markline,
