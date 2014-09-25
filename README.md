@@ -17,3 +17,18 @@ var Markline = require('markline');
 var line = new Markline("#timeline", "./data/timeline.md");
 line.render();
 ```
+
+## API
+
+### Markline(Object element, String filePath)
+
+Markline Constuctor.
+
+Params:
+
+* `Object element`: markline container element, Need HTMLElement, jQuery Object, or Selector.
+* `String filePath`: markdown file path to be used.
+
+### markline.render()
+
+Render timeline into container.
