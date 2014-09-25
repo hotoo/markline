@@ -9,7 +9,7 @@
 <div id="demo"></div>
 
 ````javascript
-seajs.use('index', function(Markline) {
+seajs.use('../timeline', function(Markline) {
   var line = new Markline("#demo", {
     "default": [
       {
