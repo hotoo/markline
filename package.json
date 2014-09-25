@@ -2,15 +2,15 @@
   "name": "markline",
   "version": "0.1.0",
   "description": "Timeline via Markdown",
-  "keywords": [],
-  "homepage": "",
+  "keywords": ["Timeline", "Markdown"],
+  "homepage": "https://github.com/hotoo/markline",
   "author": "hotoo <hotoo.cn@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/hotoo/markline"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/hotoo/markline/issues"
   },
   "licenses": "MIT",
   "spm": {
