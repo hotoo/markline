@@ -4,7 +4,37 @@ var $ = require("jquery");
 
 function Markline(element, markdown_filepath){
   this.element = element;
-  this._datafile = markdown_filepath
+  this._datafile = markdown_filepath;
+}
+
+// @param {String} date
+function parseDate(date){
+  if (!date) {
+    return new Date();
+  }
+  return new Date(date.replace(/\-/g, "/").replace("T", " "));
+}
+
+var RE_YEAR = /^\d{4}$/;
+var RE_MONTH = /^\d{4}[\/\-]\d{1,2}$/;
+var RE_DATE = /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/;
+
+// @param {String} date.
+function parseDateEnd(date){
+  var dt = parseDate(date);
+
+  if (RE_YEAR.test(date)) {
+    dt.setYear(dt.getFullYear() + 1);
+  } else if (RE_MONTH.test(date)) {
+    if (dt.getMonth() === 11) {
+      dt.setYear(dt.getFullYear() + 1);
+      dt.setMonth(0);
+    } else {
+      dt.setMonth(dt.getMonth() + 1);
+    }
+  }
+
+  return dt;
 }
 
 function parse(markdown){
@@ -26,36 +56,27 @@ function parse(markdown){
     var text_line = lines[i];
     var match;
     if (match = text_line.match(re_title)){
+      // PARSE TITLE.
       data.title = match[1];
     } else if (match = text_line.match(re_group)){
+      // PARSE GRPUPS.
       var group_name = match[1];
       current_group = group_name;
       data.data[current_group] = [];
     } else if (match = text_line.match(re_line)){
+      // PARSE EVENT LINES.
 
       if (!data.data[current_group]){
         data.data[current_group] = [];
       }
 
       var line_start = match[2];
-      if (line_start) {
-        line_start = new Date(line_start);
-      }
-
-      var line_stop = match[3];
-      if (line_stop === undefined) {
-        line_stop = line_start;
-      } else if (!line_stop) {
-        line_stop = new Date();
-      } else {
-        line_stop = new Date(line_stop);
-      }
-
+      var line_stop = match[3] === undefined ? line_start : match[3];
       var line_name = match[4];
       var data_line = {
         "date": match[1],
-        "date-start": line_start,
-        "date-end": line_stop,
+        "date-start": parseDate(line_start),
+        "date-end": parseDateEnd(line_stop),
         "name": line_name,
         "events": []
       };
@@ -63,28 +84,17 @@ function parse(markdown){
       current_line = data_line;
 
     } else if (match = text_line.match(re_event)) {
+      // PARSE SUB EVENT POINTS.
 
       var date = match[1];
       var date_start = match[2];
-      var date_end = match[3];
+      var date_end = match[3] === undefined ? date_start : match[3];
       var name = match[4];
-
-      if (date_start) {
-        date_start = new Date(date_start);
-      }
-
-      if (date_end === undefined){
-        date_end = date_start;
-      } else if (!date_end) {
-        date_end = new Date();
-      } else {
-        date_end = new Date(date_end);
-      }
 
       current_line.events.push({
         "date": date,
-        "date-start": date_start,
-        "date-end": date_end,
+        "date-start": parseDate(date_start),
+        "date-end": parseDateEnd(date_end),
         "name": name
       });
 

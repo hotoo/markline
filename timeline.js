@@ -86,6 +86,8 @@ Markline.prototype.render = function(){
   var first_year = min_date.getFullYear();
   var last_year = max_date.getFullYear() + 2;
 
+  min_date = new Date(first_year, 0, 1);
+
   // HEAD: dates
   var head_dates = ['<div class="dates">', '<ol>'];
 
@@ -140,7 +142,7 @@ Markline.prototype.render = function(){
     },
 
     "event": function(event){
-      var event_start = calcLength(event["date-start"] - current_line_offset_left) + offset_left;
+      var event_start = calcLength(event["date-start"] - current_line_offset_left);
       var event_width = calcLength(event["date-end"] - event["date-start"]);
       if (event_width < 8) {event_width = 8;}
       body_events.push('<li style="left:', event_start, 'px;width:', event_width, 'px" title="', event.date, ' ', event.name, '"></li>');

@@ -3,17 +3,44 @@
 
 ----
 
-* 2000 name
-* 2001 name
-* 2002 name
-* 2003 name
-* 2004 name
-* 2005 name
-* 2006 name
-* 2007 name
-* 2008 name
-* 2000/01 name
-* 2000/01/01 name
-* 2000/12 name
-* 2000/12/31 name
-* 2000~2001 name
+## Ranges
+
+* 1998/05/01~2014 year to year
+* 2000~2014 year to year
+  - 2002 event point at year
+  - 2003/02 event point at month
+  - 2000/08/08 event point at date
+  - 2004/06/01~2004 event range from date to year
+* 2000~2001 year to another year
+* 2000/06~2001 month to year
+* 2000/06/16~2001 date to year
+* 2000~2001/06 year to month
+* 2000~2001/06/16 year to date
+* 2000/01~2001/01 month to month
+* 2000/01/16~2001/01 date to month
+* 2000/01~2001/01/16 month to date
+* 2000~ year to now
+* 2000/01~ month to now
+* 2000/01/16~ date to now
+
+## Single Date
+
+* 2000 year
+* 2001 another year
+* 2002 yet another year
+* 2003 more year
+* 2004 and more year
+* 2005 more and more year
+* 2006 i do not want say anything
+* 2007 ...
+* 2008 ....
+* 2000/01 month
+* 2000/02 another month
+* 2000/03 yet another month
+* 2000/01/01 date
+* 2000/01/02 another date
+* 2000/01/03 yet another date
+* 2000/01/30 more date
+* 2000/12 month
+* 2000/12/1 date
+* 2000/12/31 more date
