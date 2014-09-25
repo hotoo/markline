@@ -1,6 +1,6 @@
 {
   "name": "markline",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Timeline via Markdown",
   "keywords": ["Timeline", "Markdown"],
   "homepage": "https://github.com/hotoo/markline",
@@ -15,6 +15,7 @@
   "licenses": "MIT",
   "spm": {
     "main": "markline.js",
+    "output": ["markline.js", "timeline.js", "timeline.css"],
     "dependencies": {
       "jquery": "2.1.1"
     },
