@@ -86,6 +86,8 @@ Markline.prototype.render = function(){
   var first_year = min_date.getFullYear();
   var last_year = max_date.getFullYear() + 2;
 
+  min_date = new Date(first_year, 0, 1);
+
   // HEAD: dates
   var head_dates = ['<div class="dates">', '<ol>'];
 
