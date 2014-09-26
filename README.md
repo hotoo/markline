@@ -86,7 +86,7 @@ More markdown syntax support maybe in the feature.
 - 2013-05-05 yet another list item.
 ```
 
-### More info see ref:
+### References
 
 * [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
 * [Example Data](examples/data.mdown)
