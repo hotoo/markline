@@ -15,7 +15,7 @@
   "licenses": "MIT",
   "spm": {
     "main": "markline.js",
-    "output": ["markline.js", "timeline.js", "timeline.css"],
+    "output": ["timeline.js", "timeline.css"],
     "dependencies": {
       "jquery": "2.1.1"
     },
