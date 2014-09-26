@@ -8,19 +8,34 @@ function Markline(element, markdown_filepath){
 }
 
 // @param {String} date
-function parseDate(date){
-  if (!date) {
+function parseDate(date_string){
+
+  if (!date_string) {
     return new Date();
   }
-  return new Date(date.replace(/\-/g, "/").replace("T", " "));
-}
 
-var RE_YEAR = /^\d{4}$/;
-var RE_MONTH = /^\d{4}[\/\-]\d{1,2}$/;
-var RE_DATE = /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/;
+  //              year          month           date            hour         minute       second
+  var RE_DATE = /^(\d{4})(?:[/-](\d{1,2})(?:[/-](\d{1,2})(?:[T ](\d{1,2})(?::(\d{1,2})(?::(\d{1,2}))?)?)?)?)?$/;
+
+  var match = date_string.match(RE_DATE);
+  if (!match){return;}
+
+  var year = match[1];
+  var month = match[2] || 0;
+  var date = match[3] || 1;
+  var hour = match[4] || 0;
+  var minute = match[5] || 0;
+  var second = match[6] || 0;
+  return new Date(year, month, date, hour, minute, second);
+}
 
 // @param {String} date.
 function parseDateEnd(date){
+
+  var RE_YEAR = /^\d{4}$/;
+  var RE_MONTH = /^\d{4}[\/\-]\d{1,2}$/;
+  var RE_DATE = /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/;
+
   var dt = parseDate(date);
 
   if (RE_YEAR.test(date)) {
