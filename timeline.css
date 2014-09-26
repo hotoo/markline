@@ -10,6 +10,16 @@
   overflow: auto;
 }
 
+.markline > header {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0 0 10px 30px;
+  font-size: 1.3em;
+  color: #999;
+  white-space:nowrap;
+}
+
 .markline > .dates {
   position: absolute;
   top: 0;

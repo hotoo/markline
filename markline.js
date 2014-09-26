@@ -124,7 +124,7 @@ Markline.prototype.render = function(){
   $.get(this._datafile, function(markdown){
     var data = parse(markdown);
 
-    var timeline = new Timeline(me.element, data.data);
+    var timeline = new Timeline(me.element, data.title, data.data);
     timeline.render();
   });
 };

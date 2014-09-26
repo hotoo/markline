@@ -6,8 +6,9 @@ var offset_top = 20;
 
 var year_width = 100;
 
-function Markline (element, data) {
+function Markline (element, title, data) {
   this._element = $(element);
+  this.title = title;
   this._data = data;
 }
 
@@ -156,12 +157,20 @@ Markline.prototype.render = function(){
   this._element.addClass("markline");
   this._element.on("scroll", function(evt){
     var that = $(this);
+
+    var title = $("> header", this);
+    title.css({
+      "left": that.scrollLeft(),
+      "bottom": -that.scrollTop()
+    });
+
     var head = $(".dates", this);
     head.css({"top": that.scrollTop()});
 
     var groups = $(".groups > label", this);
     groups.css({"left": that.scrollLeft() - 90});
   });
+  this._element.append(['<header>', this.title, '</header>'].join(""));
   this._element.append(head_dates.join(""));
   this._element.append(body_events.join(""));
   $(".dates > ol > li", this._element).height($(".events", this.element).height() + offset_top);

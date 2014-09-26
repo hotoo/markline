@@ -7,6 +7,7 @@
 
 <link rel="stylesheet" href="../timeline.css" type="text/css" media="screen" charset="utf-8">
 <div id="demo" class="markline">
+  <header>Static Demo</header>
   <div class="dates">
     <ol>
       <li>1983</li>
