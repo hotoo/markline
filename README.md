@@ -90,7 +90,7 @@ More markdown syntax support maybe in the feature.
 * [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
 * [Example Data](examples/data.mdown)
 
-## Why write this?
+## Why I write this?
 
 * I like [cheeaun/life](https://github.com/cheeaun/life) but I want more.
 * I do'nt like cheeaun/life repo's code.
