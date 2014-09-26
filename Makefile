@@ -5,7 +5,7 @@ seajs_version = $(shell cat package.json | grep '"seajs"' | awk -F'"' '{print $$
 install:
 	@spm build
 
-build:
+build: clear
 	@spm build --with-deps
 	@mkdir -p ./dist/seajs/$(seajs_version)
 	@cp ./spm_modules/seajs/$(seajs_version)/dist/* ./dist/seajs/$(seajs_version)
@@ -15,3 +15,6 @@ publish:
 
 preview:
 	@static .
+
+clear:
+	@rm -rf dist
