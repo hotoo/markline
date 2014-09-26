@@ -94,7 +94,7 @@ More markdown syntax support maybe in the feature.
 ## Why I write this?
 
 * I like [cheeaun/life](https://github.com/cheeaun/life) but I want more.
-* I do'nt like cheeaun/life repo's code.
+* I don't like cheeaun/life repo's code.
 * cheeaun/life's date format is not good for me. ([IETF-compliant RFC 2822 timestamps](http://tools.ietf.org/html/rfc2822#page-14))
 * But Thanks @cheeaun for anyway.
 
