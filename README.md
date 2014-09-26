@@ -95,7 +95,7 @@ More markdown syntax support maybe in the feature.
 
 * I like [cheeaun/life](https://github.com/cheeaun/life) but I want more.
 * I do'nt like cheeaun/life repo's code.
-* cheeaun/life's date formart is not good for me. ([IETF-compliant RFC 2822 timestamps](http://tools.ietf.org/html/rfc2822#page-14))
+* cheeaun/life's date format is not good for me. ([IETF-compliant RFC 2822 timestamps](http://tools.ietf.org/html/rfc2822#page-14))
 * But thanks @cheeaun anyway.
 
 ## LICENSES
