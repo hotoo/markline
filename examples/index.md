@@ -10,7 +10,7 @@
 
 ````js
 seajs.use(['../markline'], function(Markline){
-  var markline = new Markline("#markline", "./demo.mdown");
+  var markline = new Markline("#markline", "./data.mdown");
   markline.render();
 });
 ````
