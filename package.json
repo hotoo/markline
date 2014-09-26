@@ -1,0 +1,23 @@
+{
+  "name": "line.hotoo.me",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Life Timeline for @hotoo",
+  "keywords": ["hotoo", "@hotoo", "life", "timeline"],
+  "homepage": "http://line.hotoo.me/",
+  "author": "hotoo <hotoo.cn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hotoo/line.hotoo.me"
+  },
+  "licenses": "MIT",
+  "spm": {
+    "dependencies": {
+      "markline": "0.1.1",
+      "jquery": "2.1.1"
+    },
+    "engines": {
+      "seajs": "2.3.0"
+    }
+  }
+}
