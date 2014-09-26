@@ -42,14 +42,15 @@ Markline use subsets of markdown now:
 ### Dates
 
 * `1986` for year.
-* `1986/08` for month.
-* `1986/08/14` is @lizzie's birthday.
+* `1986/06` for month.
+* `1986/06/28` is a good day.
+* `1986-06-28` you also can use this date formart.
 
 ### Date Ranges
 
 * `2012~2014` year to year.
 * `2012~2014/02` year to year.
-* `1984/06/28~1984/08/14` from date to another date.
+* `1986/06/28~1986/08/14` from date to another date.
 * `2012~` year to now.
 
 ### Header
@@ -82,7 +83,7 @@ More markdown syntax support maybe in the feature.
 ## another group
 
 - 2013 another list item.
-- 2013/05/05 yet another list item.
+- 2013-05-05 yet another list item.
 ```
 
 ### More info see ref:
@@ -94,6 +95,7 @@ More markdown syntax support maybe in the feature.
 
 * I like [cheeaun/life](https://github.com/cheeaun/life) but I want more.
 * I do'nt like cheeaun/life repo's code.
+* cheeaun/life's date formart is not good for me. ([IETF-compliant RFC 2822 timestamps](http://tools.ietf.org/html/rfc2822#page-14))
 * But thanks @cheeaun anyway.
 
 ## LICENSES
