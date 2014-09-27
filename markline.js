@@ -58,20 +58,16 @@ function parseDateEnd(date){
 function parseMarkdown(markdown){
   var RE_IMAGE = /!\[([^\]]*)\]\(([^\)]+)\)/g;
   var RE_LINK = /\[([^\]]*)\]\(([^\)]+)\)/g;
-  var RE_STRONG = /__([^_]+)__/g;
-  var RE_STRONG2 = /\*\*([^*]+)\*\*/g;
-  var RE_EM = /_([^_]+)_/g;
-  var RE_EM2 = /\*([^*]+)\*/g;
-  var RE_DELETE = /\~([^~]+)\~/g;
-  var RE_DELETE2 = /\~\~([^~]+)\~\~/g;
-  var html = markdown.replace(RE_IMAGE, '<a href="$2" target="_blank">[IMAGE:$1]</a>');
+  var RE_STRONG = /(\*\*|__)(.*?)\1/g;
+  var RE_EM = /(\*|_)(.*?)\1/g;
+  var RE_DELETE = /(\~\~?)(.*?)\1/g;
+
+
+  var html = markdown.replace(RE_IMAGE, '<a href="$2" target="_blank"><ins alt="$1" title="$1"></ins></a>');
   html = html.replace(RE_LINK, '<a href="$2" target="_blank">$1</a>');
-  html = html.replace(RE_STRONG, '<strong>$1</strong>');
-  html = html.replace(RE_STRONG2, '<strong>$1</strong>');
-  html = html.replace(RE_EM, '<em>$1</em>');
-  html = html.replace(RE_EM2, '<em>$1</em>');
-  html = html.replace(RE_DELETE2, '<del>$1</del>');
-  html = html.replace(RE_DELETE, '<del>$1</del>');
+  html = html.replace(RE_STRONG, '<strong>$2</strong>');
+  html = html.replace(RE_EM, '<em>$2</em>');
+  html = html.replace(RE_DELETE, '<del>$2</del>');
   return html;
 }
 
