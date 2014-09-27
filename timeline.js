@@ -173,7 +173,6 @@ Markline.prototype.render = function(){
   this._element.append(['<header>', this.title, '</header>'].join(""));
   this._element.append(head_dates.join(""));
   this._element.append(body_events.join(""));
-  //$(".dates > ol > li", this._element).height($(".events", this.element).height() + offset_top);
 
 };
 
