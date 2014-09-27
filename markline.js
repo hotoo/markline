@@ -52,6 +52,30 @@ function parseDateEnd(date){
   return dt;
 }
 
+// parse simple markdown.
+// @param {String} markdown.
+// @return {String} html tags.
+function parseMarkdown(markdown){
+  var RE_IMAGE = /!\[([^\]]*)\]\(([^\)]+)\)/g;
+  var RE_LINK = /\[([^\]]*)\]\(([^\)]+)\)/g;
+  var RE_STRONG = /__([^_]+)__/g;
+  var RE_STRONG2 = /\*\*([^*]+)\*\*/g;
+  var RE_EM = /_([^_]+)_/g;
+  var RE_EM2 = /\*([^*]+)\*/g;
+  var RE_DELETE = /\~([^~]+)\~/g;
+  var RE_DELETE2 = /\~\~([^~]+)\~\~/g;
+  var html = markdown.replace(RE_IMAGE, '<a href="$2" target="_blank">[IMAGE:$1]</a>');
+  html = html.replace(RE_LINK, '<a href="$2" target="_blank">$1</a>');
+  html = html.replace(RE_STRONG, '<strong>$1</strong>');
+  html = html.replace(RE_STRONG2, '<strong>$1</strong>');
+  html = html.replace(RE_EM, '<em>$1</em>');
+  html = html.replace(RE_EM2, '<em>$1</em>');
+  html = html.replace(RE_DELETE2, '<del>$1</del>');
+  html = html.replace(RE_DELETE, '<del>$1</del>');
+  return html;
+}
+
+// parse markline.
 function parse(markdown){
   var lines = markdown.split(/\r\n|\r|\n/);
   var data = {
@@ -92,7 +116,7 @@ function parse(markdown){
         "date": match[1],
         "date-start": parseDate(line_start),
         "date-end": parseDateEnd(line_stop),
-        "name": line_name,
+        "name": parseMarkdown(line_name),
         "events": []
       };
       data.data[current_group].push(data_line);
@@ -110,7 +134,7 @@ function parse(markdown){
         "date": date,
         "date-start": parseDate(date_start),
         "date-end": parseDateEnd(date_end),
-        "name": name
+        "name": parseMarkdown(name)
       });
 
     }

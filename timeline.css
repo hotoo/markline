@@ -116,7 +116,7 @@
 .markline > .events > .groups > ol > li:hover > time,
 .markline > .events > .groups > ol > li:hover > label {
   color: #fff;
-  border-bottom: 1px solid #ccc;
+  /*border-bottom: 1px solid #ccc;*/
 }
 .markline > .events > .groups > ol > li > ol > li {
   width: 8px;
@@ -143,6 +143,17 @@
   margin-left: -1px;
   z-index: 102;
   -moz-border-radius:5px; -khtml-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;
+}
+
+.markline > .events del {
+  font-style: italic;
+  color: #999;
+}
+.markline > .events a {
+  color: #2EA3D0;
+}
+.markline > .events a:hover {
+  border-bottom: 1px solid #2EA3D0;
 }
 
 .markline:after{content:"\0020"; display:block; height:0; clear:both;}
