@@ -2,9 +2,11 @@
 var Timeline = require("./timeline");
 var $ = require("jquery");
 
-function Markline(element, markdown_filepath){
+function Markline(element, markdown){
   this.element = element;
-  this._datafile = markdown_filepath;
+
+  var data = parse(markdown);
+  this.timeline = new Timeline(this.element, data.title, data.data);
 }
 
 // @param {String} date
@@ -140,13 +142,7 @@ function parse(markdown){
 }
 
 Markline.prototype.render = function(){
-  var me = this;
-  $.get(this._datafile, function(markdown){
-    var data = parse(markdown);
-
-    var timeline = new Timeline(me.element, data.title, data.data);
-    timeline.render();
-  });
+  this.timeline.render();
 };
 
 module.exports = Markline;
