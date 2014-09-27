@@ -9,8 +9,10 @@
 <div id="markline"></div>
 
 ````js
-seajs.use(['../markline'], function(Markline){
-  var markline = new Markline("#markline", "./data.mdown");
-  markline.render();
+seajs.use(['jquery', '../markline'], function($, Markline){
+  $.get("./data.mdown", function(markdown){
+    var markline = new Markline("#markline", markdown);
+    markline.render();
+  });
 });
 ````
