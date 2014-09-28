@@ -132,14 +132,16 @@ Markline.prototype.render = function(){
 
       body_events.push(
         '<li style="margin-left:', line_start, 'px;">',
-          '<ol style="width:', line_length, 'px;">');
+          '<div>',
+            '<ol style="width:', line_length, 'px;">');
     },
 
     "line:stop": function(line){
       body_events.push(
-          '</ol>',
-          '<time>', line["date"], '</time>',
-          '<label>', line.name, '</label>',
+            '</ol>',
+            '<time>', line["date"], '</time>',
+            '<label>', line.name, '</label>',
+          '</div>',
         '</li>'
       );
     },

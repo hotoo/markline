@@ -91,7 +91,6 @@
 }
 .markline > .events ol,
 .markline > .events ol > li {
-  z-index: 101;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -120,8 +119,16 @@
   background-color: #333;
 }
 
+.markline > .events > .groups > ol > li > div {
+  display: inline-block;
+  background: rgba(51,51,51,0.4);
+  position: relative;
+  padding-right: 20px;
+  z-index: 101;
+  -moz-border-radius:8px; -khtml-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;
+}
 
-.markline > .events > .groups > ol > li > ol {
+.markline > .events > .groups > ol > li > div > ol {
   white-space: nowrap;
   border: 0;
   background-color: #999;
@@ -135,16 +142,15 @@
 .markline > .events > .groups > ol > li:hover > ol {
   background-color: #ccc;
 }
-.markline > .events > .groups > ol > li > time ,
-.markline > .events > .groups > ol > li > label {
-  background: #333;
+.markline > .events > .groups > ol > li > div > time ,
+.markline > .events > .groups > ol > li > div > label {
   padding: 2px 5px;
 }
-.markline > .events > .groups > ol > li:hover > time,
-.markline > .events > .groups > ol > li:hover > label {
+.markline > .events > .groups > ol > li:hover > div > time,
+.markline > .events > .groups > ol > li:hover > div > label {
   color: #fff;
 }
-.markline > .events > .groups > ol > li > ol > li {
+.markline > .events > .groups > ol > li > > div > ol > li {
   width: 8px;
   height: 8px;
   font-size: 0;
@@ -158,16 +164,15 @@
   text-indent: -10000px;
   cursor: pointer;
 }
-.markline > .events > .groups > ol > li:hover > ol > li {
+.markline > .events > .groups > ol > li:hover > div > ol > li {
   background-color: #fff;
   z-index: 100;
 }
-.markline > .events > .groups > ol > li > ol > li:hover {
+.markline > .events > .groups > ol > li > div > ol > li:hover {
   background-color: #333;
   border:1px solid #ccc;
   margin-top: -1px;
   margin-left: -1px;
-  z-index: 101;
   -moz-border-radius:5px; -khtml-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;
 }
 

@@ -10,7 +10,7 @@
 
 ````javascript
 seajs.use('../timeline', function(Markline) {
-  var line = new Markline("#demo", "DEMO", {
+  var line = new Markline("#demo", "DEMO", {age:"show"}, {
     "default": [
       {
         "name": "text",
