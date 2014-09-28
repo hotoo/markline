@@ -3,7 +3,7 @@ version = $(shell cat package.json | grep '"version"' | awk -F'"' '{print $$4}')
 seajs_version = $(shell cat package.json | grep '"seajs"' | awk -F'"' '{print $$4}')
 
 install:
-	@spm build
+	@spm install
 
 build: clear
 	@spm build --with-deps
@@ -13,6 +13,7 @@ build: clear
 publish:
 	@git push origin gh-pages
 
+# npm install node-static -g
 preview:
 	@static .
 
