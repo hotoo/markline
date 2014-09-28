@@ -65,7 +65,7 @@ function parseMarkdown(markdown){
   var RE_DELETE = /(\~\~?)(.*?)\1/g;
 
 
-  var html = markdown.replace(RE_IMAGE, '<a href="$2" target="_blank"><ins alt="$1" title="$1"></ins></a>');
+  var html = markdown.replace(RE_IMAGE, '<a href="$2" class="img" title="$1" target="_blank">$1</a>');
   html = html.replace(RE_LINK, '<a href="$2" target="_blank">$1</a>');
   html = html.replace(RE_STRONG, '<strong>$2</strong>');
   html = html.replace(RE_EM, '<em>$2</em>');
