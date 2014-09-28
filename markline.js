@@ -95,7 +95,7 @@ function parse(markdown){
   var inmeta = false;
 
   function addGroup(group_name){
-    if (data.data.hasOwnProperty(group_name)) {
+    while (data.data.hasOwnProperty(group_name)) {
       group_name += " ";
     }
     current_group = group_name;
