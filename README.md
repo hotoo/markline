@@ -63,7 +63,46 @@ Markline use subsets of markdown now:
 * `* list item`, `- another list item` for lines.
 * `  * sub list item`, `  - another sub list item` for events.
 
-### Others
+### Horizontal
+
+for anonymous group.
+
+```markdown
+----
+````
+
+### Link
+
+```markdown
+[link](url)
+```
+
+### Image
+
+```markdown
+![alt](image-url)
+```
+
+### Strong
+
+```markdown
+**strong**
+__another strong__
+```
+
+### Italic
+
+```markdown
+_italic_
+*another italic*
+```
+
+### Delete
+
+```markdown
+~delete~
+~~another delete~~
+```
 
 More markdown syntax support maybe in the feature.
 

@@ -78,16 +78,31 @@ function parse(markdown){
   var lines = markdown.split(/\r\n|\r|\n/);
   var data = {
     title: "",
+    meta: {},
     data: {}
   };
 
   var re_title = /^#\s+(.*)$/;
+  var re_meta = /^[\-\*]\s+([^:]+):\s*(.*)$/;
+  var re_hr = /^\-{2,}$/;
   var re_group = /^##+\s+(.*)$/;
   var re_line  = /^[\*\-]\s+(([0-9\/\-]+)(?:~([0-9\/\-]*))?)\s+(.*)$/;
   var re_event  = /^\s+[\*\-]\s+(([0-9\/\-]+)(?:~([0-9\/\-]*))?)\s+(.*)$/;
 
   var current_group = "";
   var current_line;
+  var inline = false; // into group, line, or event body.
+  var inmeta = false;
+
+  function addGroup(group_name){
+    if (data.data.hasOwnProperty(group_name)) {
+      group_name += " ";
+    }
+    current_group = group_name;
+    data.data[current_group] = [];
+
+    inline = true;
+  }
 
   for(var i=0,l=lines.length; i<l; i++){
     var text_line = lines[i];
@@ -95,11 +110,17 @@ function parse(markdown){
     if (match = text_line.match(re_title)){
       // PARSE TITLE.
       data.title = match[1];
+    } else if (!inline && (match = text_line.match(re_meta))) {
+      var meta_name = match[1];
+      var meta_value = match[2];
+      data.meta[meta_name] = meta_value;
+      inmeta = true;
+    } else if (text_line.match(re_hr)){
+      addGroup("");
     } else if (match = text_line.match(re_group)){
       // PARSE GRPUPS.
       var group_name = match[1];
-      current_group = group_name;
-      data.data[current_group] = [];
+      addGroup(group_name);
     } else if (match = text_line.match(re_line)){
       // PARSE EVENT LINES.
 
@@ -120,6 +141,7 @@ function parse(markdown){
       data.data[current_group].push(data_line);
       current_line = data_line;
 
+      inline = true;
     } else if (match = text_line.match(re_event)) {
       // PARSE SUB EVENT POINTS.
 
@@ -135,6 +157,7 @@ function parse(markdown){
         "name": parseMarkdown(name)
       });
 
+      inline = true;
     }
   }
 
