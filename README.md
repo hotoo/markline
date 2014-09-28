@@ -20,14 +20,14 @@ line.render();
 
 ## API
 
-### Markline(Object element, String filePath)
+### Markline(Object element, String markdown)
 
 Markline Constuctor.
 
 Params:
 
 * `Object element`: markline container element, Need HTMLElement, jQuery Object, or Selector.
-* `String filePath`: markdown file path to be used.
+* `String markdown`: markdown content.
 
 ### markline.render()
 
