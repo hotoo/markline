@@ -6,10 +6,11 @@ var offset_top = 20;
 
 var year_width = 100;
 
-function Markline (element, title, data) {
+function Markline (element, title, meta, data) {
   this._element = $(element);
-  this.title = title;
-  this._data = data;
+  this.title = title || "";
+  this.meta = meta || {};
+  this._data = data || {};
 }
 
 function calcLength(distance){
@@ -89,11 +90,12 @@ Markline.prototype.render = function(){
 
   min_date = new Date(first_year, 0, 1);
 
+
   // HEAD: dates
   var head_dates = ['<div class="dates">', '<ol>'];
 
-  for(var year=first_year; year<=last_year; year++){
-    head_dates.push('<li><label>', year, '</label></li>')
+  for(var year=first_year, age=0; year<=last_year; year++, age++){
+    head_dates.push('<li><label>', year, this.meta.age === "show" ? ' ('+ age +')' : '', '</label></li>')
   }
 
   head_dates.push('</ol>', '</div>');

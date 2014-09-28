@@ -73,6 +73,28 @@ Markline use subsets of markdown now:
 ###### h6 group name
 ```
 
+### Meta
+
+Between title and group or lines, we can set meta data in markdown by key-value pair.
+
+```markdown
+# title
+
+- age: show
+- date: 2014/01/01
+- author: @hotoo
+
+----
+
+# Group 1
+
+* 2014 line 1.
+```
+
+Now we support meta data:
+
+* `theme`
+
 ### List
 
 ```markdown

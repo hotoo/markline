@@ -6,7 +6,7 @@ function Markline(element, markdown){
   this.element = element;
 
   var data = parse(markdown);
-  this.timeline = new Timeline(this.element, data.title, data.data);
+  this.timeline = new Timeline(this.element, data.title, data.meta, data.data);
 }
 
 // @param {String} date
