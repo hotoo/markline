@@ -6,11 +6,11 @@ var offset_top = 20;
 
 var year_width = 100;
 
-function Markline (element, title, meta, data) {
+function Markline (element, data) {
   this._element = $(element);
-  this.title = title || "";
-  this.meta = meta || {};
-  this._data = data || {};
+  this.title = data.title || "";
+  this.meta = data.meta || {};
+  this.body = data.body || {};
 }
 
 function calcLength(distance){
@@ -67,7 +67,7 @@ Markline.prototype.render = function(){
   var min_date;
   var max_date;
 
-  this._process(this._data, {
+  this._process(this.body, {
     "line:start": function(line){
 
       var date_start = line["date-start"];
@@ -105,7 +105,7 @@ Markline.prototype.render = function(){
   var body_events = ['<div class="events" id="events">'];
   var current_line_offset_left = 0;
 
-  this._process(this._data, {
+  this._process(this.body, {
     "group:start": function(group_name){
       body_events.push(
         '<div class="groups">',

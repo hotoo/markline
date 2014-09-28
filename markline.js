@@ -6,7 +6,7 @@ function Markline(element, markdown){
   this.element = element;
 
   var data = parse(markdown);
-  this.timeline = new Timeline(this.element, data.title, data.meta, data.data);
+  this.timeline = new Timeline(this.element, data);
 }
 
 // @param {String} date
@@ -79,7 +79,7 @@ function parse(markdown){
   var data = {
     title: "",
     meta: {},
-    data: {}
+    body: {}
   };
 
   var re_title = /^#\s+(.*)$/;
@@ -95,11 +95,11 @@ function parse(markdown){
   var inmeta = false;
 
   function addGroup(group_name){
-    while (data.data.hasOwnProperty(group_name)) {
+    while (data.body.hasOwnProperty(group_name)) {
       group_name += " ";
     }
     current_group = parseMarkdown(group_name);
-    data.data[current_group] = [];
+    data.body[current_group] = [];
 
     inline = true;
   }
@@ -124,8 +124,8 @@ function parse(markdown){
     } else if (match = text_line.match(re_line)){
       // PARSE EVENT LINES.
 
-      if (!data.data[current_group]){
-        data.data[current_group] = [];
+      if (!data.body[current_group]){
+        data.body[current_group] = [];
       }
 
       var line_start = match[2];
@@ -138,7 +138,7 @@ function parse(markdown){
         "name": parseMarkdown(line_name),
         "events": []
       };
-      data.data[current_group].push(data_line);
+      data.body[current_group].push(data_line);
       current_line = data_line;
 
       inline = true;
