@@ -15,7 +15,7 @@
 
 ## Ranges
 
-* 1998/05/01~2014 year to year
+* 1998/05/01~2014 year to year, long long long long long long long long long long long long ago.
 * 2000~2014 year to year
   - 2002 event point at year
   - 2003/02 event point at month

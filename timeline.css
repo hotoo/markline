@@ -120,10 +120,12 @@
 .markline > .events > .groups > ol > li > time {
   margin: 0 5px;
 }
+.markline > .events > .groups > ol > li > label {
+  margin-right: 10px;
+}
 .markline > .events > .groups > ol > li:hover > time,
 .markline > .events > .groups > ol > li:hover > label {
   color: #fff;
-  /*border-bottom: 1px solid #ccc;*/
 }
 .markline > .events > .groups > ol > li > ol > li {
   width: 8px;

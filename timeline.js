@@ -129,7 +129,7 @@ Markline.prototype.render = function(){
       if (line_length < 8) {line_length = 8;}
 
       body_events.push(
-        '<li style="left:', line_start, 'px;">',
+        '<li style="margin-left:', line_start, 'px;">',
           '<ol style="width:', line_length, 'px;">');
     },
 
@@ -146,7 +146,7 @@ Markline.prototype.render = function(){
       var event_start = calcLength(event["date-start"] - current_line_offset_left);
       var event_width = calcLength(event["date-end"] - event["date-start"]);
       if (event_width < 8) {event_width = 8;}
-      body_events.push('<li style="left:', event_start, 'px;width:', event_width, 'px" title="', event.date, ' ', event.name, '"></li>');
+      body_events.push('<li style="margin-left:', event_start, 'px;width:', event_width, 'px" title="', event.date, ' ', event.name, '"></li>');
     }
 
   });
