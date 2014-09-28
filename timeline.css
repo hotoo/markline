@@ -20,6 +20,12 @@
   white-space:nowrap;
   z-index: 99;
 }
+.markline > header > a {
+  color: #6EA3D0;
+}
+.markline > header > a:hover {
+  border-bottom: 1px solid #6EA3D0;
+}
 
 .markline > .dates {
   position: absolute;
@@ -64,10 +70,10 @@
   position: absolute;
   top: 30px;
   left: 0;
-  z-index: 101;
 }
 .markline > .events ol,
 .markline > .events ol > li {
+  z-index: 101;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -151,11 +157,11 @@
   color: #999;
 }
 .markline > .events a {
-  color: #2EA3D0;
+  color: #6EA3D0;
   text-decoration: none;
 }
 .markline > .events a:hover {
-  border-bottom: 1px solid #2EA3D0;
+  border-bottom: 1px solid #6EA3D0;
 }
 .markline > .events a.img {
   border: 0;
