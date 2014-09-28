@@ -45,70 +45,90 @@ Markline use subsets of markdown now:
 
 ### Dates
 
-* `1986` for year.
-* `1986/06` for month.
-* `1986/06/28` is a good day.
-* `1986-06-28` you also can use this date formart.
+```markdown
+* 1986 for year.
+* 1986/06 for month.
+* 1986/06/28 is a good day.
+* 1986-06-28 you also can use this date formart.
+```
 
 ### Date Ranges
 
-* `2012~2014` year to year.
-* `2012~2014/02` year to year.
-* `1986/06/28~1986/08/14` from date to another date.
-* `2012~` year to now.
+```markdown
+* 2012~2014 year to year.
+* 2012~2014/02 year to year.
+* 1986/06/28~1986/08/14 from date to another date.
+* 2012~ year to now.
+```
 
 ### Header
 
-* `# h1` for title.
-* `## h2`, `### h3`, `#### h4`, `##### h5`, `###### h6` for groups.
+```markdown
+# title
+
+## h2 group name
+### h3 group name
+#### h4 group name
+##### h5 group name
+###### h6 group name
+```
 
 ### List
 
-* `* list item`, `- another list item` for lines.
-* `  * sub list item`, `  - another sub list item` for events.
+```markdown
+* 2014 list item
+  * 2014/01 sub list item
+
+- 2014 another list item
+  - 2014/01 another sub list item
+```
 
 ### Horizontal
 
 for anonymous group.
 
 ```markdown
+* 2014 line 1
+
 ----
-````
+
+* 2015 line 2
+```
 
 ### Link
 
 ```markdown
-[link](url)
+* 2014  this is a  [link](url)
 ```
 
 ### Image
 
 ```markdown
-![alt](image-url)
+* 2014 this is an image: ![alt](image-url)
 ```
 
 ### Strong
 
 ```markdown
-**strong**
-__another strong__
+* 2014 this is **strong** text.
+* 2014 this is __another strong__ text.
 ```
 
 ### Emphasized
 
 ```markdown
-_emphasized_
-*another emphasized*
+* 2014 this is _emphasized_ text.
+* 2014 this is *another emphasized* text.
 ```
 
 ### Delete
 
 ```markdown
-~delete~
-~~another delete~~
+* 2014 this is ~delete~ text.
+* 2014 this is ~~another delete~~ text.
 ```
 
-More markdown syntax support maybe in the feature.
+Want more markdown syntax feature? make [issues](https://github.com/hotoo/markline/issues), fork and pull request.
 
 ### Examples
 
