@@ -1,14 +1,14 @@
 
-# Demo Timeline
+# Demo [Markline](https://github.com/hotoo/markline)
 
 - date: 2014/09/20
 - author: @hotoo <hotoo.cn@gmail.com>
 
 ----
 
-## Markdown
+## [Markdown](https://github.com/hotoo/markline#markdown)
 
-* 2000 this is [link](link), and ![image](image.png)
+* 2000 this is [link](https://github.com/hotoo/markline), and ![image](https://avatars0.githubusercontent.com/u/143572?v=2&s=460)
 * 2000 this is **strong**, and __strong2__
 * 2000 this is *em*, and _em2_
 * 2000 this is ~delete~, and ~~delete2~~

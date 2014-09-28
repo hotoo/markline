@@ -94,11 +94,11 @@ for anonymous group.
 __another strong__
 ```
 
-### Italic
+### Emphasized
 
 ```markdown
-_italic_
-*another italic*
+_emphasized_
+*another emphasized*
 ```
 
 ### Delete

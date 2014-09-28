@@ -98,7 +98,7 @@ function parse(markdown){
     while (data.data.hasOwnProperty(group_name)) {
       group_name += " ";
     }
-    current_group = group_name;
+    current_group = parseMarkdown(group_name);
     data.data[current_group] = [];
 
     inline = true;
@@ -109,7 +109,7 @@ function parse(markdown){
     var match;
     if (match = text_line.match(re_title)){
       // PARSE TITLE.
-      data.title = match[1];
+      data.title = parseMarkdown(match[1]);
     } else if (!inline && (match = text_line.match(re_meta))) {
       var meta_name = match[1];
       var meta_value = match[2];

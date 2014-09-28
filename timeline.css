@@ -18,6 +18,7 @@
   font-size: 1.3em;
   color: #999;
   white-space:nowrap;
+  z-index: 99;
 }
 
 .markline > .dates {
@@ -45,8 +46,8 @@
 .markline > .dates > ol > li > label,
 .markline > .groups > ol > li > label {
   background-color: #333;
-  z-index: 201;
   display: block;
+  z-index: 103;
 }
 .markline > .dates > ol > li > label {
   position: relative;
@@ -91,7 +92,7 @@
   overflow: hidden;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
-  z-index: 200;
+  z-index: 102;
   background-color: #333;
 }
 
@@ -134,14 +135,14 @@
 }
 .markline > .events > .groups > ol > li:hover > ol > li {
   background-color: #fff;
-  z-index: 101;
+  z-index: 100;
 }
 .markline > .events > .groups > ol > li > ol > li:hover {
   background-color: #333;
   border:1px solid #ccc;
   margin-top: -1px;
   margin-left: -1px;
-  z-index: 102;
+  z-index: 101;
   -moz-border-radius:5px; -khtml-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;
 }
 
@@ -151,6 +152,7 @@
 }
 .markline > .events a {
   color: #2EA3D0;
+  text-decoration: none;
 }
 .markline > .events a:hover {
   border-bottom: 1px solid #2EA3D0;
