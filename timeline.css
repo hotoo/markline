@@ -150,7 +150,7 @@
 .markline > .events > .groups > ol > li:hover > div > label {
   color: #fff;
 }
-.markline > .events > .groups > ol > li > > div > ol > li {
+.markline > .events > .groups > ol > li > div > ol > li {
   width: 8px;
   height: 8px;
   font-size: 0;
