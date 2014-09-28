@@ -1,4 +1,4 @@
-# Markline [![spm version](http://spmjs.io/badge/markline)](http://spmjs.io/package/markline)
+# Markline [![spm version](http://spmjs.io/badge/markline)](http://spmjs.io/package/markline) [![NPM version](https://badge.fury.io/js/markline.png)](http://badge.fury.io/js/markline)
 
 ---
 
