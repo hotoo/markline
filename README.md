@@ -14,8 +14,12 @@ $ spm install markline --save
 
 ```js
 var Markline = require('markline');
-var line = new Markline("#timeline", "./data/timeline.md");
-line.render();
+var $ = require("jquery");
+
+$.get("./data/timeline.md", function(markdown){
+  var line = new Markline("#timeline", markdown);
+  line.render();
+});
 ```
 
 ## API
