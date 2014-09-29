@@ -139,7 +139,7 @@
   display: inline-block;
   position: relative;
 }
-.markline > .events > .groups > ol > li:hover > ol {
+.markline > .events > .groups > ol > li:hover > div > ol {
   background-color: #ccc;
 }
 .markline > .events > .groups > ol > li > div > time ,
