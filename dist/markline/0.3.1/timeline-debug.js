@@ -1,13 +1,14 @@
-define("markline/0.2.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
+define("markline/0.3.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
   var $ = require("jquery/2.1.1/jquery-debug");
   var offset_left = 30;
   var offset_top = 20;
   var year_width = 100;
 
-  function Markline(element, title, data) {
+  function Markline(element, data) {
     this._element = $(element);
-    this.title = title;
-    this._data = data;
+    this.title = data.title || "";
+    this.meta = data.meta || {};
+    this.body = data.body || {};
   }
 
   function calcLength(distance) {
@@ -53,7 +54,7 @@ define("markline/0.2.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(
   Markline.prototype.render = function() {
     var min_date;
     var max_date;
-    this._process(this._data, {
+    this._process(this.body, {
       "line:start": function(line) {
         var date_start = line["date-start"];
         var date_end = line["date-end"];
@@ -70,14 +71,14 @@ define("markline/0.2.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(
     min_date = new Date(first_year, 0, 1);
     // HEAD: dates
     var head_dates = ['<div class="dates">', '<ol>'];
-    for (var year = first_year; year <= last_year; year++) {
-      head_dates.push('<li><label>', year, '</label></li>')
+    for (var year = first_year, age = 0; year <= last_year; year++, age++) {
+      head_dates.push('<li><label>', year, this.meta.age === "show" ? ' (' + age + ')' : '', '</label></li>')
     }
     head_dates.push('</ol>', '</div>');
     // BODY: events groups, and events.
     var body_events = ['<div class="events" id="events">'];
     var current_line_offset_left = 0;
-    this._process(this._data, {
+    this._process(this.body, {
       "group:start": function(group_name) {
         body_events.push('<div class="groups">', '<label>', group_name, '</label>', '<ol>');
       },
@@ -93,10 +94,10 @@ define("markline/0.2.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(
         if (line_length < 8) {
           line_length = 8;
         }
-        body_events.push('<li style="left:', line_start, 'px;">', '<ol style="width:', line_length, 'px;">');
+        body_events.push('<li style="margin-left:', line_start, 'px;">', '<div>', '<ol style="width:', line_length, 'px;">');
       },
       "line:stop": function(line) {
-        body_events.push('</ol>', '<time>', line["date"], '</time>', '<label>', line.name, '</label>', '</li>');
+        body_events.push('</ol>', '<time>', line["date"], '</time>', '<label>', line.name, '</label>', '</div>', '</li>');
       },
       "event": function(event) {
         var event_start = calcLength(event["date-start"] - current_line_offset_left);
