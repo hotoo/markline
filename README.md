@@ -93,7 +93,23 @@ Between title and group or lines, we can set meta data in markdown by key-value 
 
 Now we support meta data:
 
-* `theme`
+* `age`: show age after year in top header line. default is hide, if want show, set:
+
+  ```markdown
+  - age: show
+  ```
+
+following meta data support come soon.
+
+* `theme`: set different theme, by build-in theme name, or theme css file url.
+
+  ```markdown
+  - theme: light
+  - theme: http://www.example.com/theme.css
+  ```
+* `year-length`: set date column width.
+* `date-type`: show date type by `year`, `month`, or `date`
+* `author`: set author information.
 
 ### List
 
@@ -120,7 +136,7 @@ for anonymous group.
 ### Link
 
 ```markdown
-* 2014  this is a  [link](url)
+* 2014 this is a  [link](url)
 ```
 
 ### Image
