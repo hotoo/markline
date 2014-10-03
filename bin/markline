@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+var commander = require('commander');
+var markline = require("../index");
+
+commander
+  .version(require('../package').version)
+  .usage('[options]')
+  .option('-v, --version', 'output the version number')
+  .option('build', 'build markdown to markline page.')
+  .option('server', 'build markdown to markline page.')
+  .parse(process.argv);
+
+
+var cwd = process.cwd();
+var options = {
+  src: commander.source || cwd,
+  dist: commander.dist || cwd + "/dist"
+};
+
+if (commander.build) {
+  markline.build(options);
+  process.exit();
+} else if (commander.server){
+  markline.server(options);
+  process.exit();
+}
+
+// output help and exit if no args found
+if (commander.args.length === 0) {
+  commander.help();
+}
+
+
+// vim:ft=javascript

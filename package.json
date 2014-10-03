@@ -12,7 +12,16 @@
   "bugs": {
     "url": "https://github.com/hotoo/markline/issues"
   },
-  "licenses": "MIT",
+  "bin": {
+    "pinyin": "./bin/pinyin"
+  },
+  "dependencies": {
+    "commander": "~1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "1.17.1",
+    "expect.js": "0.3.1"
+  },
   "spm": {
     "main": "markline.js",
     "output": ["timeline.js", "timeline.css"],
@@ -22,5 +31,6 @@
     "devDependencies": {
       "expect.js": "0.3.1"
     }
-  }
+  },
+  "licenses": "MIT"
 }
