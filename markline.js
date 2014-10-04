@@ -65,8 +65,9 @@ function parseMarkdown(markdown, meta){
   var RE_STRONG = /(\*\*|__)(.*?)\1/g;
   var RE_EM = /(\*|_)(.*?)\1/g;
   var RE_DELETE = /(\~\~?)(.*?)\1/g;
-  var RE_MEMTION = /@([^ ]+)/g;
+  var RE_MEMTION = /[\s\t]@([^\s\t]+)/g;
   var RE_MEMTION_PLACEHOLDER = /\{@memtion\}/ig;
+  var RE_HASHTAG = /[\s\t]\#([^\s\t]+)/g;
 
 
   var html = markdown.replace(RE_IMAGE, '<a href="$2" class="img" title="$1" target="_blank">$1</a>');
@@ -83,6 +84,17 @@ function parseMarkdown(markdown, meta){
         '" target="_blank">@' + $1_memtion_name + '</a>';
     });
   }
+
+  var DEFAULT_TAG_COLOR = "#eee";
+  var DEFAULT_TAG_BACKGROUND_COLOR = "#96f";
+  html = html.replace(RE_HASHTAG, function($0, $1_tag_name){
+    var tag_colors = meta.tags || meta.tag || {};
+    var tag_color = (tag_colors[$1_tag_name] || "").split(/[\s,]+/);
+    var color = tag_color[0] || DEFAULT_TAG_COLOR;
+    var bg_color = tag_color[1] || DEFAULT_TAG_BACKGROUND_COLOR;
+    return '<span class="tags" style="color:' + color + ';background-color:' + bg_color + ';">#' + $1_tag_name + '</span>';
+  });
+
   return html;
 }
 
