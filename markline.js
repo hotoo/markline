@@ -23,7 +23,7 @@ function parseDate(date_string){
   if (!match){return;}
 
   var year = match[1];
-  var month = match[2] || 0;
+  var month = parseInt(match[2] || 1, 10) - 1;
   var date = match[3] || 1;
   var hour = match[4] || 0;
   var minute = match[5] || 0;
