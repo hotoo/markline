@@ -102,10 +102,30 @@ Now we support meta data:
 * `memtion`: set memtion enable, and memtion base url. default memtion is disable.
 
   ```md
+  # @Memtion Demo
+
   - memtion: https://github.com/{@memtion}
+
+  ----
+
+  - 2014 @hotoo memtion @lizzie
   ```
 
   `{@memtion}` is placeholder for memtion name.
+
+* `hashtag`: custom hashtag styles.
+
+  ```md
+  # #HashTag Demo
+
+  - hashtag:
+    - tag-name: text-color, background-color
+    - life: yellow, #f00
+
+  ----
+
+  - 2014 this is my #life
+  ```
 
 following meta data support come soon.
 

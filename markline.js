@@ -4,6 +4,10 @@ var $ = require("jquery");
 
 var DEFAULT_MEMTION_URL = "https://github.com/{@memtion}";
 
+function isString (object){
+  return Object.prototype.toString.call(object) === "[object String]";
+}
+
 function Markline(element, markdown){
   this.element = element;
 
@@ -109,6 +113,7 @@ function parse(markdown){
 
   var re_title = /^#\s+(.*)$/;
   var re_meta = /^[\-\*]\s+([^:]+):\s*(.*)$/;
+  var re_submeta = /^[\s\t]+[\-\*]\s+([^:]+):\s*(.*)$/;
   var re_hr = /^\-{2,}$/;
   var re_group = /^##+\s+(.*)$/;
   var re_line  = /^[\*\-]\s+(([0-9\/\-]+)(?:~([0-9\/\-]*))?)\s+(.*)$/;
@@ -118,6 +123,8 @@ function parse(markdown){
   var current_line;
   var inline = false; // into group, line, or event body.
   var inmeta = false;
+  var current_meta_name;
+  var current_meta_value;
 
   function addGroup(group_name){
     while (data.body.hasOwnProperty(group_name)) {
@@ -139,6 +146,20 @@ function parse(markdown){
       var meta_name = match[1];
       var meta_value = match[2];
       data.meta[meta_name] = meta_value;
+      current_meta_name = meta_name;
+      current_meta_value = meta_value;
+      inmeta = true;
+    } else if (!inline && (match = text_line.match(re_submeta))) {
+
+      if (isString(data.meta[current_meta_name])) {
+        data.meta[current_meta_name] = {
+          "default": current_meta_value
+        };
+      }
+
+      var meta_name = match[1];
+      var meta_value = match[2];
+      data.meta[current_meta_name][meta_name] = meta_value;
       inmeta = true;
     } else if (text_line.match(re_hr)){
       addGroup("");

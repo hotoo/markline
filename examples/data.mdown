@@ -5,6 +5,9 @@
 - author: @hotoo <hotoo.cn@gmail.com>
 - age: show
 - memtion: https://twitter.com/{@memtion}
+- tags:
+  - job: #fff, #f00
+  - life: #fff, #f00
 
 ----
 
@@ -17,8 +20,8 @@
 
 ## @Memthon and #HashTags
 
-- 1998 @lizzie
-- 1998 #lizzie
+- 1998 @hotoo memtion @lizzie
+- 1998 this is my #life
 - 2013/05/07~2014/10/04 Fall in Love with @lizzie #hashtag
   - 2014-09-30 Married
 
