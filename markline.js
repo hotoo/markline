@@ -69,7 +69,7 @@ function parseMarkdown(markdown, meta){
   var RE_STRONG = /(\*\*|__)(.*?)\1/g;
   var RE_EM = /(\*|_)(.*?)\1/g;
   var RE_DELETE = /(\~\~?)(.*?)\1/g;
-  var RE_MEMTION = /(?:^|[\s\t])@([^\s\t]+)/g;
+  var RE_MEMTION = /(^|[\s\t])@([^\s\t]+)/g;
   var RE_MEMTION_PLACEHOLDER = /\{@memtion\}/ig;
   var RE_HASHTAG = /(?:^|[\s\t])\#([^\s\t]+)/g;
 
@@ -81,11 +81,11 @@ function parseMarkdown(markdown, meta){
   html = html.replace(RE_DELETE, '<del>$2</del>');
 
   if (meta.memtion) {
-    html = html.replace(RE_MEMTION, function($0, $1_memtion_name){
+    html = html.replace(RE_MEMTION, function($0, $1_prefix, $2_memtion_name){
       var memtion_url = meta.memtion || DEFAULT_MEMTION_URL;
-      return '<a href="' +
-        memtion_url.replace(RE_MEMTION_PLACEHOLDER, $1_memtion_name) +
-        '" target="_blank">@' + $1_memtion_name + '</a>';
+      return $1_prefix + '<a href="' +
+        memtion_url.replace(RE_MEMTION_PLACEHOLDER, $2_memtion_name) +
+        '" target="_blank">@' + $2_memtion_name + '</a>';
     });
   }
 
@@ -93,7 +93,7 @@ function parseMarkdown(markdown, meta){
   var DEFAULT_TAG_BACKGROUND_COLOR = "#96f";
   html = html.replace(RE_HASHTAG, function($0, $1_tag_name){
     var tag_colors = meta.tags || meta.tag || {};
-    var tag_color = (tag_colors[$1_tag_name] || "").split(/[\s,]+/);
+    var tag_color = (tag_colors[$1_tag_name] || "").split(/,[\s\t]+/);
     var color = tag_color[0] || DEFAULT_TAG_COLOR;
     var bg_color = tag_color[1] || DEFAULT_TAG_BACKGROUND_COLOR;
     return '<span class="tags" style="color:' + color + ';background-color:' + bg_color + ';">#' + $1_tag_name + '</span>';

@@ -7,7 +7,7 @@
 - memtion: https://twitter.com/{@memtion}
 - tags:
   - job: #fff, #f00
-  - life: #fff, #f00
+  - life: #fff, rgba(255,0,0,0.5)
 
 ----
 
