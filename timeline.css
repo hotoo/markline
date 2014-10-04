@@ -139,15 +139,15 @@
   display: inline-block;
   position: relative;
 }
-.markline > .events > .groups > ol > li:hover > div > ol {
+.markline > .events > .groups > ol > li > div:hover > ol {
   background-color: #ccc;
 }
 .markline > .events > .groups > ol > li > div > time ,
 .markline > .events > .groups > ol > li > div > label {
   padding: 2px 5px;
 }
-.markline > .events > .groups > ol > li:hover > div > time,
-.markline > .events > .groups > ol > li:hover > div > label {
+.markline > .events > .groups > ol > li > div:hover > time,
+.markline > .events > .groups > ol > li > div:hover > label {
   color: #fff;
 }
 .markline > .events > .groups > ol > li > div > ol > li {
@@ -164,7 +164,7 @@
   text-indent: -10000px;
   cursor: pointer;
 }
-.markline > .events > .groups > ol > li:hover > div > ol > li {
+.markline > .events > .groups > ol > li > div:hover > ol > li {
   background-color: #fff;
   z-index: 100;
 }
