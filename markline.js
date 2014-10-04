@@ -65,9 +65,9 @@ function parseMarkdown(markdown, meta){
   var RE_STRONG = /(\*\*|__)(.*?)\1/g;
   var RE_EM = /(\*|_)(.*?)\1/g;
   var RE_DELETE = /(\~\~?)(.*?)\1/g;
-  var RE_MEMTION = /[\s\t]@([^\s\t]+)/g;
+  var RE_MEMTION = /(?:^|[\s\t])@([^\s\t]+)/g;
   var RE_MEMTION_PLACEHOLDER = /\{@memtion\}/ig;
-  var RE_HASHTAG = /[\s\t]\#([^\s\t]+)/g;
+  var RE_HASHTAG = /(?:^|[\s\t])\#([^\s\t]+)/g;
 
 
   var html = markdown.replace(RE_IMAGE, '<a href="$2" class="img" title="$1" target="_blank">$1</a>');

@@ -15,6 +15,13 @@
 * 2000 this is *em*, and _em2_
 * 2000 this is ~delete~, and ~~delete2~~
 
+## @Memthon and #HashTags
+
+- 1998 @lizzie
+- 1998 #lizzie
+- 2013/05/07~2014/10/04 Fall in Love with @lizzie #hashtag
+  - 2014-09-30 Married
+
 ## Ranges
 
 * 1998/05/01~2014 year to year, long long long long long long long long long long long long ago.
