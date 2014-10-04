@@ -4,6 +4,7 @@
 - date: 2014/09/20
 - author: @hotoo <hotoo.cn@gmail.com>
 - age: show
+- memtion: https://twitter.com/{@memtion}
 
 ----
 

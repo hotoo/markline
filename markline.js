@@ -2,6 +2,8 @@
 var Timeline = require("./timeline");
 var $ = require("jquery");
 
+var DEFAULT_MEMTION_URL = "https://github.com/{@memtion}";
+
 function Markline(element, markdown){
   this.element = element;
 
@@ -57,12 +59,14 @@ function parseDateEnd(date){
 // parse simple markdown.
 // @param {String} markdown.
 // @return {String} html tags.
-function parseMarkdown(markdown){
+function parseMarkdown(markdown, meta){
   var RE_IMAGE = /!\[([^\]]*)\]\(([^\)]+)\)/g;
   var RE_LINK = /\[([^\]]*)\]\(([^\)]+)\)/g;
   var RE_STRONG = /(\*\*|__)(.*?)\1/g;
   var RE_EM = /(\*|_)(.*?)\1/g;
   var RE_DELETE = /(\~\~?)(.*?)\1/g;
+  var RE_MEMTION = /@([^ ]+)/g;
+  var RE_MEMTION_PLACEHOLDER = /\{@memtion\}/ig;
 
 
   var html = markdown.replace(RE_IMAGE, '<a href="$2" class="img" title="$1" target="_blank">$1</a>');
@@ -70,6 +74,15 @@ function parseMarkdown(markdown){
   html = html.replace(RE_STRONG, '<strong>$2</strong>');
   html = html.replace(RE_EM, '<em>$2</em>');
   html = html.replace(RE_DELETE, '<del>$2</del>');
+
+  if (meta.memtion) {
+    html = html.replace(RE_MEMTION, function($0, $1_memtion_name){
+      var memtion_url = meta.memtion || DEFAULT_MEMTION_URL;
+      return '<a href="' +
+        memtion_url.replace(RE_MEMTION_PLACEHOLDER, $1_memtion_name) +
+        '" target="_blank">@' + $1_memtion_name + '</a>';
+    });
+  }
   return html;
 }
 
@@ -98,7 +111,7 @@ function parse(markdown){
     while (data.body.hasOwnProperty(group_name)) {
       group_name += " ";
     }
-    current_group = parseMarkdown(group_name);
+    current_group = parseMarkdown(group_name, data.meta);
     data.body[current_group] = [];
 
     inline = true;
@@ -109,7 +122,7 @@ function parse(markdown){
     var match;
     if (match = text_line.match(re_title)){
       // PARSE TITLE.
-      data.title = parseMarkdown(match[1]);
+      data.title = parseMarkdown(match[1], data.meta);
     } else if (!inline && (match = text_line.match(re_meta))) {
       var meta_name = match[1];
       var meta_value = match[2];
@@ -135,7 +148,7 @@ function parse(markdown){
         "date": match[1],
         "date-start": parseDate(line_start),
         "date-end": parseDateEnd(line_stop),
-        "name": parseMarkdown(line_name),
+        "name": parseMarkdown(line_name, data.meta),
         "events": []
       };
       data.body[current_group].push(data_line);
@@ -154,7 +167,7 @@ function parse(markdown){
         "date": date,
         "date-start": parseDate(date_start),
         "date-end": parseDateEnd(date_end),
-        "name": parseMarkdown(name)
+        "name": parseMarkdown(name, data.meta)
       });
 
       inline = true;
