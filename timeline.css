@@ -206,6 +206,7 @@
 .clearfix{zoom:1;}
 
 .markline .tags {
+  height: 20px;
   margin: 0 5px;
   padding: 0 5px 2px 15px;
   display: inline-block;
@@ -213,5 +214,17 @@
   -khtml-border-radius:100% 3px 3px 100%;
   -webkit-border-top-left-radius:100%; -webkit-border-top-right-radius:3px;
   -webkit-border-bottom-right-radius:3px; -webkit-border-bottom-left-radius:100%;
-   border-radius:100% 3px 3px 100%;
+  border-radius:100% 3px 3px 100%;
+  position: relative;
+}
+.markline .tags:before {
+  position: absolute;
+  content: "";
+  left: 5px;
+  top: 50%;
+  margin-top: -3px;
+  width: 6px;
+  height: 6px;
+  background: #eee;
+  -moz-border-radius:100%; -khtml-border-radius:100%; -webkit-border-radius:100%; border-radius:100%;
 }
