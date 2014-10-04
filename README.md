@@ -121,6 +121,7 @@ Now we support meta data:
   - hashtag:
     - tag-name: text-color, background-color
     - life: yellow, #f00
+    - job: rgb(255,255,255), rgba(255,0,0,0.5)
 
   ----
 
