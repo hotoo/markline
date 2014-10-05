@@ -71,7 +71,7 @@
 .markline > .groups > ol > li > label {
   background-color: #333;
   display: block;
-  z-index: 103;
+  /*z-index: 103;*/ /* Fixed #10, RENDERING BUGS IN Google Chrome */
 }
 .markline > .dates > ol > li > label {
   position: relative;
