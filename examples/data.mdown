@@ -4,6 +4,10 @@
 - date: 2014/09/20
 - author: @hotoo <hotoo.cn@gmail.com>
 - age: show
+- memtion: https://twitter.com/{@memtion}
+- tags:
+  - job: #fff, #f00
+  - life: #fff, rgba(255,0,0,0.5)
 
 ----
 
@@ -13,6 +17,13 @@
 * 2000 this is **strong**, and __strong2__
 * 2000 this is *em*, and _em2_
 * 2000 this is ~delete~, and ~~delete2~~
+
+## @Memthon and #HashTags
+
+- 1998 @hotoo memtion @lizzie
+- 1998 this is my #life
+- 2013/05/07~2014/10/04 Fall in Love with @lizzie #hashtag
+  - 2014-09-30 Married
 
 ## Ranges
 

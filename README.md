@@ -83,6 +83,7 @@ Between title and group or lines, we can set meta data in markdown by key-value 
 - age: show
 - date: 2014/01/01
 - author: @hotoo
+- memtion: https://twitter.com/{@memtion}
 
 ----
 
@@ -97,6 +98,34 @@ Now we support meta data:
 
   ```markdown
   - age: show
+  ```
+* `memtion`: set memtion enable, and memtion base url. default memtion is disable.
+
+  ```md
+  # @Memtion Demo
+
+  - memtion: https://github.com/{@memtion}
+
+  ----
+
+  - 2014 @hotoo memtion @lizzie
+  ```
+
+  `{@memtion}` is placeholder for memtion name.
+
+* `hashtag`: custom hashtag styles.
+
+  ```md
+  # #HashTag Demo
+
+  - hashtag:
+    - tag-name: text-color, background-color
+    - life: yellow, #f00
+    - job: rgb(255,255,255), rgba(255,0,0,0.5)
+
+  ----
+
+  - 2014 this is my #life
   ```
 
 following meta data support come soon.

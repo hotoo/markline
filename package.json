@@ -1,6 +1,6 @@
 {
   "name": "markline",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Timeline via Markdown",
   "keywords": ["Timeline", "Markdown"],
   "homepage": "https://github.com/hotoo/markline",
@@ -21,6 +21,9 @@
     },
     "devDependencies": {
       "expect.js": "0.3.1"
+    },
+    "engines": {
+      "seajs": "2.3.0"
     }
   }
 }
