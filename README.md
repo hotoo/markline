@@ -29,9 +29,12 @@ for Command Line Interface(CLI):
 ```bash
 $ markline server data.md
 Server Started 127.0.0.1:8000
+
 $ markline server -p 80 data.md
 Server Started 127.0.0.1:80
+
 $ markline build data.md
+
 $ markline build data.md --dist _site
 ```
 
