@@ -98,7 +98,13 @@ function server(cwd, options){
 
     }
   }).listen(port).on("error", function(error){
-    console.error(error);
+    if (error.code === 'EADDRINUSE') {
+      console.error('Error: This port is in use, change to another one');
+    } else {
+      throw error;
+    }
+  }).on("listening", function(){
+    console.log("Server started at 127.0.0.1:" + port);
   });
 
   if (watch){
@@ -114,7 +120,6 @@ function server(cwd, options){
     });
   }
 
-  console.log("Server Started 127.0.0.1:" + port);
 }
 
 function watch(){
