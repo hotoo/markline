@@ -1,19 +1,42 @@
 var fs = require("fs");
 var path = require("path");
+var gulp = require("gulp");
+var replace = require("gulp-replace");
+var del = require("del");
 
-function build(options){
-  console.log(options.src)
-  console.log(options.dist)
-}
-
+var DEFAULT_DIST = "dist";
 var DEFAULT_PORT = 8000;
 var DEFAULT_ENCODE = "utf-8";
+
+function build(cwd, options){
+  var fileName = options.args.join("");
+  var encode = options.encode || DEFAULT_ENCODE;
+  var template_dir = path.join(__dirname, "template");
+  var dist_dir = options.dist || path.join(cwd, DEFAULT_DIST);
+
+  if (!fs.existsSync(fileName)) {
+    console.error("Not Found:", fileName);
+    return;
+  }
+
+  del(dist_dir, function(){
+
+    gulp.src(path.join(template_dir, '**'), { dot: true })
+      .pipe(replace('{FILE_NANE}', path.basename(fileName) ))
+      .pipe(gulp.dest(dist_dir));
+
+    gulp.src(path.join(cwd, fileName))
+      .pipe(gulp.dest(dist_dir));
+
+  });
+
+}
 
 function server(cwd, options){
   var port = options.port || DEFAULT_PORT;
   var encode = options.encode || DEFAULT_ENCODE;
-
   var fileName = options.args.join("");
+
   if (!fs.existsSync(fileName)) {
     console.error("Not Found:", fileName);
     return;
