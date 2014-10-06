@@ -3,6 +3,9 @@ var path = require("path");
 var gulp = require("gulp");
 var replace = require("gulp-replace");
 var del = require("del");
+var Event = require("events").EventEmitter;
+
+var evt = new Event();
 
 var DEFAULT_DIST = "dist";
 var DEFAULT_PORT = 8000;
@@ -35,6 +38,7 @@ function build(cwd, options){
 function server(cwd, options){
   var port = options.port || DEFAULT_PORT;
   var encode = options.encode || DEFAULT_ENCODE;
+  var watch = options.watch || false;
   var fileName = options.args.join("");
 
   if (!fs.existsSync(fileName)) {
@@ -42,15 +46,10 @@ function server(cwd, options){
     return;
   }
 
-  var http = require('http').createServer(function (req, res) {
+  var app = require('http').createServer(function (req, res) {
     var url = req.url;
 
-    if (url === "/") {
-      fs.readFile(path.join(__dirname, "template", "index.html"), encode, function(err, html){
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end(html.replace("{FILE_NANE}", fileName));
-      });
-    } else if (url === "/" + fileName) {
+    if (url === "/" + fileName) {
       fs.readFile(path.join(cwd, fileName), encode, function(err, markdown){
         res.writeHead(200, {'Content-Type': 'text/markdown'});
         res.end(markdown);
@@ -64,7 +63,7 @@ function server(cwd, options){
       };
 
       if (url === "/") {
-        url = "index.html";
+        url = "/index.html";
       }
 
       var ext = url.split(".");
@@ -75,7 +74,21 @@ function server(cwd, options){
 
         fs.readFile(filePath, encode, function(err, html){
           res.writeHead(200, {'Content-Type': MIME_TYPE[ext]});
-          res.end(html.replace("{FILE_NANE}", fileName));
+          if (url === "/index.html") {
+            html = html.replace('{FILE_NANE}', fileName);
+
+            if (watch) {
+              html = html.replace('</body>', [
+                  '<script src="/socket.io/socket.io.js"></script><script>',
+                  'var socket = io.connect("/");',
+                  'socket.on("reload", function() { location.reload(); });',
+                  '</script>',
+                  '</body>'
+                ].join('\n')
+              );
+            }
+          }
+          res.end(html);
         });
 
       } else {
@@ -87,6 +100,20 @@ function server(cwd, options){
   }).listen(port).on("error", function(error){
     console.error(error);
   });
+
+  if (watch){
+    var io = require('socket.io')(app);
+    io.sockets.on('connection', function(socket) {
+      socket.emit('hello', {message: 'markline'});
+
+      fs.watch(fileName, function(event, fileName) {
+        if (!socket.disconnected) {
+          socket.emit('reload', {message: fileName});
+        }
+      });
+    });
+  }
+
   console.log("Server Started 127.0.0.1:" + port);
 }
 
