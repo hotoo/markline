@@ -10,7 +10,8 @@ commander
   .option('build', 'build markdown to markline page.')
   .option('server', 'preview markdown to markline page.')
   .option('-p, --port [port]', 'server port for preview markline.')
-  .option('-w, --watch', 'watch markdown file change, and auto reload for preview markline.')
+  // TODO: watch markdown file, auto reload preview page.
+  //.option('-w, --watch', 'watch markdown file change, and auto reload for preview markline.')
   .option('--dist [dist]', 'build markdown file to markline static site. default is `dist` in current working directory.')
   .parse(process.argv);
 
