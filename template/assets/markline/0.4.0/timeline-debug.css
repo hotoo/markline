@@ -6,6 +6,7 @@
   font-size: 13px;
 
   min-width: 500px;
+  height: 100%;
   -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;
   overflow: auto;
 }
@@ -50,12 +51,14 @@
   top: 0;
   left: 0;
   white-space:nowrap;
+  height: 100%;
 }
 .markline > .dates > ol,
 .markline > .dates > ol > li {
   list-style: none;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 .markline > .dates > ol > li {
   display: inline-block;
@@ -71,7 +74,7 @@
 .markline > .groups > ol > li > label {
   background-color: #333;
   display: block;
-  z-index: 103;
+  /*z-index: 103;*/ /* Fixed #10, RENDERING BUGS IN Google Chrome */
 }
 .markline > .dates > ol > li > label {
   position: relative;
@@ -138,15 +141,15 @@
   display: inline-block;
   position: relative;
 }
-.markline > .events > .groups > ol > li:hover > div > ol {
+.markline > .events > .groups > ol > li > div:hover > ol {
   background-color: #ccc;
 }
 .markline > .events > .groups > ol > li > div > time ,
 .markline > .events > .groups > ol > li > div > label {
   padding: 2px 5px;
 }
-.markline > .events > .groups > ol > li:hover > div > time,
-.markline > .events > .groups > ol > li:hover > div > label {
+.markline > .events > .groups > ol > li > div:hover > time,
+.markline > .events > .groups > ol > li > div:hover > label {
   color: #fff;
 }
 .markline > .events > .groups > ol > li > div > ol > li {
@@ -163,7 +166,7 @@
   text-indent: -10000px;
   cursor: pointer;
 }
-.markline > .events > .groups > ol > li:hover > div > ol > li {
+.markline > .events > .groups > ol > li > div:hover > ol > li {
   background-color: #fff;
   z-index: 100;
 }
@@ -203,3 +206,29 @@
 .markline{zoom:1;}
 .clearfix:after{content:"\0020"; display:block; height:0; clear:both;}
 .clearfix{zoom:1;}
+
+.markline .tags {
+  height: 20px;
+  margin: 0 5px;
+  padding: 0 5px 2px 15px;
+  display: inline-block;
+  -moz-border-radius:100% 3px 3px 100%;
+  -khtml-border-radius:100% 3px 3px 100%;
+  -webkit-border-top-left-radius:100%; -webkit-border-top-right-radius:3px;
+  -webkit-border-bottom-right-radius:3px; -webkit-border-bottom-left-radius:100%;
+  border-radius:100% 3px 3px 100%;
+  position: relative;
+  color: #eee;
+  background-color: #96f;
+}
+.markline .tags:before {
+  position: absolute;
+  content: "";
+  left: 5px;
+  top: 50%;
+  margin-top: -3px;
+  width: 6px;
+  height: 6px;
+  background: #eee;
+  -moz-border-radius:100%; -khtml-border-radius:100%; -webkit-border-radius:100%; border-radius:100%;
+}

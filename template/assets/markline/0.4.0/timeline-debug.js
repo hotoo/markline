@@ -1,4 +1,4 @@
-define("markline/0.3.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
+define("markline/0.4.0/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
   var $ = require("jquery/2.1.1/jquery-debug");
   var offset_left = 30;
   var offset_top = 20;
@@ -93,6 +93,7 @@ define("markline/0.3.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(
         var line_length = calcLength(date_end - date_start);
         if (line_length < 8) {
           line_length = 8;
+          //line_start -= 4;
         }
         body_events.push('<li style="margin-left:', line_start, 'px;">', '<div>', '<ol style="width:', line_length, 'px;">');
       },
@@ -104,6 +105,7 @@ define("markline/0.3.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(
         var event_width = calcLength(event["date-end"] - event["date-start"]);
         if (event_width < 8) {
           event_width = 8;
+          event_start -= 4;
         }
         body_events.push('<li style="left:', event_start, 'px;width:', event_width, 'px" title="', event.date, ' ', event.name, '"></li>');
       }

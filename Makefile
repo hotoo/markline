@@ -1,10 +1,17 @@
-version = $(shell cat package.json | grep version | awk -F'"' '{print $$4}')
+name = $(shell cat package.json | grep '"name"' | awk -F'"' '{print $$4}')
+version = $(shell cat package.json | grep '"version"' | awk -F'"' '{print $$4}')
+seajs_version = $(shell cat package.json | grep '"seajs"' | awk -F'"' '{print $$4}')
 
 install:
 	@spm install
 
-build:
-	@spm build
+build: clean install
+	@spm build --with-deps -O ./template/assets/
+	@mkdir -p ./template/assets/seajs/$(seajs_version)
+	@cp ./spm_modules/seajs/$(seajs_version)/dist/* ./template/assets/seajs/$(seajs_version)
+	@sed 's/markline\/[0-9\.]\{1,\}/markline\/$(version)/g' ./template/index.html > ./template/index-tmp.html
+	@rm -rf ./template/index.html
+	@mv ./template/index-tmp.html ./template/index.html
 
 publish: publish-doc
 	@spm publish
@@ -23,6 +30,7 @@ watch:
 
 clean:
 	@rm -fr _site
+	@rm -rf ./template/assets
 
 
 runner = _site/tests/runner.html
