@@ -69,7 +69,7 @@ function parseMarkdown(markdown, meta){
   var RE_STRONG = /(\*\*|__)(.*?)\1/g;
   var RE_EM = /(\*|_)(.*?)\1/g;
   var RE_DELETE = /(\~\~?)(.*?)\1/g;
-  var RE_MEMTION = /(^|[\s\t])@([^\s\t]+)/g;
+  var RE_MEMTION = /(^|[^a-zA-Z0-9])@([^\s\t,\(\)\[\]\{\}]+)/g;
   var RE_MEMTION_PLACEHOLDER = /\{@memtion\}/ig;
   var RE_HASHTAG = /(?:^|[\s\t])\#([^\s\t]+)/g;
 
@@ -82,11 +82,11 @@ function parseMarkdown(markdown, meta){
 
   // memtion:
   if (meta.memtion) {
-    html = html.replace(RE_MEMTION, function($0, $1_prefix, $2_memtion_name){
+    html = html.replace(RE_MEMTION, function($0, prefix, memtion_name){
       var memtion_url = meta.memtion || DEFAULT_MEMTION_URL;
-      return $1_prefix + '<a href="' +
-        memtion_url.replace(RE_MEMTION_PLACEHOLDER, $2_memtion_name) +
-        '" target="_blank">@' + $2_memtion_name + '</a>';
+      return prefix + '<a href="' +
+        memtion_url.replace(RE_MEMTION_PLACEHOLDER, memtion_name) +
+        '" target="_blank">@' + memtion_name + '</a>';
     });
   }
 
