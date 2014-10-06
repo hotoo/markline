@@ -20,19 +20,7 @@ $ spm install markline --save
 
 ## Usage
 
-for Web:
-
-```js
-var Markline = require('markline');
-var $ = require("jquery");
-
-$.get("./data/timeline.md", function(markdown){
-  var line = new Markline("#timeline", markdown);
-  line.render();
-});
-```
-
-for Command Line Interface(CLI):
+### for Command Line Interface(CLI):
 
 ```bash
 $ markline server data.md
@@ -47,6 +35,18 @@ $ markline build data.md --dist _site
 ```
 
 build pages in `dist` directory by default, you can set `--dist` argument for custom.
+
+### for Web:
+
+```js
+var Markline = require('markline');
+var $ = require("jquery");
+
+$.get("./data/timeline.md", function(markdown){
+  var line = new Markline("#timeline", markdown);
+  line.render();
+});
+```
 
 ## API
 
