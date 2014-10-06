@@ -16,7 +16,7 @@
     "url": "https://github.com/hotoo/markline/issues"
   },
   "bin": {
-    "pinyin": "./bin/pinyin"
+    "markline": "./bin/markline"
   },
   "dependencies": {
     "commander": "~1.1.1",
