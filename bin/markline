@@ -8,7 +8,9 @@ commander
   .usage('[options]')
   .option('-v, --version', 'output the version number')
   .option('build', 'build markdown to markline page.')
-  .option('server', 'build markdown to markline page.')
+  .option('server', 'preview markdown to markline page.')
+  .option('-p, --port [port]', 'server port for preview markline.')
+  .option('-w, --watch', 'watch markdown file change, and auto reload for preview markline.')
   .parse(process.argv);
 
 
@@ -22,8 +24,8 @@ if (commander.build) {
   markline.build(options);
   process.exit();
 } else if (commander.server){
-  markline.server(options);
-  process.exit();
+  markline.server(cwd, commander);
+  return;
 }
 
 // output help and exit if no args found

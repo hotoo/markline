@@ -1,0 +1,28 @@
+{
+  "name": "line.hotoo.me",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Preview for Markline",
+  "keywords": [
+    "markdown",
+    "timeline",
+    "life",
+    "line"
+  ],
+  "homepage": "https://github.com/hotoo/markline",
+  "author": "hotoo <hotoo.cn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hotoo/markline"
+  },
+  "licenses": "MIT",
+  "spm": {
+    "dependencies": {
+      "markline": "0.3.1",
+      "jquery": "2.1.1"
+    },
+    "engines": {
+      "seajs": "2.3.0"
+    }
+  }
+}
