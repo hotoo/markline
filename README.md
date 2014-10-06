@@ -6,6 +6,14 @@ Timeline via Markdown
 
 ## Install
 
+via npm:
+
+```bash
+$ npm install markline -g
+```
+
+via spm:
+
 ```
 $ spm install markline --save
 ```
