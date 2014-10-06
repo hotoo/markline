@@ -80,6 +80,7 @@ function parseMarkdown(markdown, meta){
   html = html.replace(RE_EM, '<em>$2</em>');
   html = html.replace(RE_DELETE, '<del>$2</del>');
 
+  // memtion:
   if (meta.memtion) {
     html = html.replace(RE_MEMTION, function($0, $1_prefix, $2_memtion_name){
       var memtion_url = meta.memtion || DEFAULT_MEMTION_URL;
@@ -89,14 +90,18 @@ function parseMarkdown(markdown, meta){
     });
   }
 
-  var DEFAULT_TAG_COLOR = "#eee";
-  var DEFAULT_TAG_BACKGROUND_COLOR = "#96f";
+  // #hashtags:
   html = html.replace(RE_HASHTAG, function($0, $1_tag_name){
     var tag_colors = meta.tags || meta.tag || {};
-    var tag_color = (tag_colors[$1_tag_name] || "").split(/,[\s\t]+/);
-    var color = tag_color[0] || DEFAULT_TAG_COLOR;
-    var bg_color = tag_color[1] || DEFAULT_TAG_BACKGROUND_COLOR;
-    return '<span class="tags" style="color:' + color + ';background-color:' + bg_color + ';">#' + $1_tag_name + '</span>';
+    var style;
+
+    if (tag_colors.hasOwnProperty($1_tag_name)) {
+      var tag_color = (tag_colors[$1_tag_name] || "").split(/,[\s\t]+/);
+      var color = tag_color[0];
+      var bg_color = tag_color[1];
+      style =  ' style="color:' + color + ';background-color:' + bg_color + ';"';
+    }
+    return '<span class="tags"' + style + '>#' + $1_tag_name + '</span>';
   });
 
   return html;

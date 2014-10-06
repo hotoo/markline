@@ -216,6 +216,8 @@
   -webkit-border-bottom-right-radius:3px; -webkit-border-bottom-left-radius:100%;
   border-radius:100% 3px 3px 100%;
   position: relative;
+  color: #eee;
+  background-color: #96f;
 }
 .markline .tags:before {
   position: absolute;
