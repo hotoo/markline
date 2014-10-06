@@ -6,6 +6,7 @@ install:
 	@spm install
 
 build: clean install
+	@rm -rf ./template/assets
 	@spm build --with-deps -O ./template/assets/
 	@mkdir -p ./template/assets/seajs/$(seajs_version)
 	@cp ./spm_modules/seajs/$(seajs_version)/dist/* ./template/assets/seajs/$(seajs_version)
@@ -30,7 +31,6 @@ watch:
 
 clean:
 	@rm -fr _site
-	@rm -rf ./template/assets
 
 
 runner = _site/tests/runner.html
