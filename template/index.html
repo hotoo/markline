@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Markline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+  <style type="text/css" media="screen">
+    html,body,#life{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="./assets/markline/0.3.1/timeline.css" media="all" />
+  <script src="./assets/seajs/2.3.0/sea.js"></script>
+  <script>
+    seajs.config({
+      base: "./assets",
+      alias: {
+        "jquery":"jquery/2.1.1/jquery.js",
+        "markline":"markline/0.3.1/markline.js"
+      }
+    });
+  </script>
+  <script>
+    seajs.use(["jquery", "markline"], function($, Markline){
+      $(function(){
+        $.get("{FILE_NANE}", function(markdown){
+          new Markline("#life", markdown).render();
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="life"></div>
+</body>
+</html>

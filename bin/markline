@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+
+var commander = require('commander');
+var markline = require("../index");
+
+commander
+  .version(require('../package').version)
+  .usage('[options]')
+  .option('-v, --version', 'output the version number')
+  .option('build', 'build markdown to markline page.')
+  .option('server', 'preview markdown to markline page.')
+  .option('-p, --port [port]', 'server port for preview markline.')
+  .option('-w, --watch', 'watch markdown file change, and auto reload for preview markline.')
+  .option('--dist [dist]', 'build markdown file to markline static site. default is `dist` in current working directory.')
+  .parse(process.argv);
+
+
+var cwd = process.cwd();
+
+if (commander.build) {
+  markline.build(cwd, commander);
+  return;
+} else if (commander.server){
+  markline.server(cwd, commander);
+  return;
+}
+
+// output help and exit if no args found
+if (commander.args.length === 0) {
+  commander.help();
+}
+
+
+// vim:ft=javascript
