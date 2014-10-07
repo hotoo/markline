@@ -2,7 +2,7 @@
 var Timeline = require("./timeline");
 var $ = require("jquery");
 
-var DEFAULT_MEMTION_URL = "https://github.com/{@memtion}";
+var DEFAULT_MENTION_URL = "https://github.com/{@mention}";
 
 function isString (object){
   return Object.prototype.toString.call(object) === "[object String]";
@@ -69,8 +69,8 @@ function parseMarkdown(markdown, meta){
   var RE_STRONG = /(\*\*|__)(.*?)\1/g;
   var RE_EM = /(\*|_)(.*?)\1/g;
   var RE_DELETE = /(\~\~?)(.*?)\1/g;
-  var RE_MEMTION = /(^|[^a-zA-Z0-9])@([^\s\t,\(\)\[\]\{\}]+)/g;
-  var RE_MEMTION_PLACEHOLDER = /\{@memtion\}/ig;
+  var RE_MENTION = /(^|[^a-zA-Z0-9])@([^\s\t,\(\)\[\]\{\}]+)/g;
+  var RE_MENTION_PLACEHOLDER = /\{@mention\}/ig;
   var RE_HASHTAG = /(?:^|[\s\t])\#([^\s\t]+)/g;
 
 
@@ -80,13 +80,13 @@ function parseMarkdown(markdown, meta){
   html = html.replace(RE_EM, '<em>$2</em>');
   html = html.replace(RE_DELETE, '<del>$2</del>');
 
-  // memtion:
-  if (meta.memtion) {
-    html = html.replace(RE_MEMTION, function($0, prefix, memtion_name){
-      var memtion_url = meta.memtion || DEFAULT_MEMTION_URL;
+  // mention:
+  if (meta.mention) {
+    html = html.replace(RE_MENTION, function($0, prefix, mention_name){
+      var mention_url = meta.mention || DEFAULT_MENTION_URL;
       return prefix + '<a href="' +
-        memtion_url.replace(RE_MEMTION_PLACEHOLDER, memtion_name) +
-        '" target="_blank">@' + memtion_name + '</a>';
+        mention_url.replace(RE_MENTION_PLACEHOLDER, mention_name) +
+        '" target="_blank">@' + mention_name + '</a>';
     });
   }
 
