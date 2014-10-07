@@ -1,10 +1,10 @@
 
 var $ = require("jquery");
 
-var offset_left = 30;
-var offset_top = 20;
+var offset_left = 30; // offset left for group name.
+var offset_top = 20; // offset top for date header.
+var year_width = 100; // width per date (year).
 
-var year_width = 100;
 
 function Markline (element, data) {
   this._element = $(element);
@@ -13,6 +13,8 @@ function Markline (element, data) {
   this.body = data.body || {};
 }
 
+// @param {Number} distance, two date distance milliseconds.
+// @return {Number} line width.
 function calcLength(distance){
   return parseInt((distance / (24 * 60 * 60 * 1000)) * year_width / 365.24, 10);
 }
