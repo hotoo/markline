@@ -1,4 +1,4 @@
-define("markline/0.5.0/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
+define("markline/0.5.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
   var $ = require("jquery/2.1.1/jquery-debug");
   var offset_left = 30; // offset left for group name.
   var offset_top = 20; // offset top for date header.
