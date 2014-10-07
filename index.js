@@ -12,12 +12,12 @@ var DEFAULT_PORT = 8000;
 var DEFAULT_ENCODE = "utf-8";
 
 function build(cwd, options){
-  var fileName = options.args.join("");
+  var fileName = options.args[0] || "";
   var encode = options.encode || DEFAULT_ENCODE;
   var template_dir = path.join(__dirname, "template");
   var dist_dir = options.dist || path.join(cwd, DEFAULT_DIST);
 
-  if (!fs.existsSync(fileName)) {
+  if (!fileName || !fs.existsSync(fileName)) {
     console.error("Not Found:", fileName);
     return;
   }
@@ -39,9 +39,9 @@ function server(cwd, options){
   var port = options.port || DEFAULT_PORT;
   var encode = options.encode || DEFAULT_ENCODE;
   var watch = options.watch || false;
-  var fileName = options.args.join("");
+  var fileName = options.args[0] || "";
 
-  if (!fs.existsSync(fileName)) {
+  if (!fileName || !fs.existsSync(fileName)) {
     console.error("Not Found:", fileName);
     return;
   }
