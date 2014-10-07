@@ -1,7 +1,7 @@
-define("markline/0.4.0/markline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
-  var Timeline = require("markline/0.4.0/timeline-debug");
+define("markline/0.5.0/markline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
+  var Timeline = require("markline/0.5.0/timeline-debug");
   var $ = require("jquery/2.1.1/jquery-debug");
-  var DEFAULT_MEMTION_URL = "https://github.com/{@memtion}";
+  var DEFAULT_MENTION_URL = "https://github.com/{@mention}";
 
   function isString(object) {
     return Object.prototype.toString.call(object) === "[object String]";
@@ -58,19 +58,19 @@ define("markline/0.4.0/markline-debug", ["jquery/2.1.1/jquery-debug"], function(
     var RE_STRONG = /(\*\*|__)(.*?)\1/g;
     var RE_EM = /(\*|_)(.*?)\1/g;
     var RE_DELETE = /(\~\~?)(.*?)\1/g;
-    var RE_MEMTION = /(^|[^a-zA-Z0-9])@([^\s\t,\(\)\[\]\{\}]+)/g;
-    var RE_MEMTION_PLACEHOLDER = /\{@memtion\}/ig;
+    var RE_MENTION = /(^|[^a-zA-Z0-9])@([^\s\t,\(\)\[\]\{\}]+)/g;
+    var RE_MENTION_PLACEHOLDER = /\{@mention\}/ig;
     var RE_HASHTAG = /(?:^|[\s\t])\#([^\s\t]+)/g;
     var html = markdown.replace(RE_IMAGE, '<a href="$2" class="img" title="$1" target="_blank">$1</a>');
     html = html.replace(RE_LINK, '<a href="$2" target="_blank">$1</a>');
     html = html.replace(RE_STRONG, '<strong>$2</strong>');
     html = html.replace(RE_EM, '<em>$2</em>');
     html = html.replace(RE_DELETE, '<del>$2</del>');
-    // memtion:
-    if (meta.memtion) {
-      html = html.replace(RE_MEMTION, function($0, prefix, memtion_name) {
-        var memtion_url = meta.memtion || DEFAULT_MEMTION_URL;
-        return prefix + '<a href="' + memtion_url.replace(RE_MEMTION_PLACEHOLDER, memtion_name) + '" target="_blank">@' + memtion_name + '</a>';
+    // mention:
+    if (meta.mention) {
+      html = html.replace(RE_MENTION, function($0, prefix, mention_name) {
+        var mention_url = meta.mention || DEFAULT_MENTION_URL;
+        return prefix + '<a href="' + mention_url.replace(RE_MENTION_PLACEHOLDER, mention_name) + '" target="_blank">@' + mention_name + '</a>';
       });
     }
     // #hashtags:
@@ -186,19 +186,19 @@ define("markline/0.4.0/markline-debug", ["jquery/2.1.1/jquery-debug"], function(
   };
   module.exports = Markline;
 });
-define("markline/0.4.0/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
+define("markline/0.5.0/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
   var $ = require("jquery/2.1.1/jquery-debug");
-  var offset_left = 30;
-  var offset_top = 20;
-  var year_width = 100;
-
+  var offset_left = 30; // offset left for group name.
+  var offset_top = 20; // offset top for date header.
+  var year_width = 100; // width per date (year).
   function Markline(element, data) {
     this._element = $(element);
     this.title = data.title || "";
     this.meta = data.meta || {};
     this.body = data.body || {};
   }
-
+  // @param {Number} distance, two date distance milliseconds.
+  // @return {Number} line width.
   function calcLength(distance) {
     return parseInt((distance / (24 * 60 * 60 * 1000)) * year_width / 365.24, 10);
   }
