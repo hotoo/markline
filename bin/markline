@@ -9,20 +9,14 @@ var markline = require("../index");
 commander
   .version(require('../package').version)
   .usage('[options]')
-  //.option('build', 'build markdown to markline page.')
-  //.option('server', 'preview markdown to markline page.')
+  .option('build', 'build markdown to markline page.')
+  .option('server', 'preview markdown to markline page.')
   .parse(process.argv);
-
-commander.on('--help', function() {
-  console.log('    build     build markdown to markline page.');
-  console.log('    server    preview markdown to markline page.');
-  console.log('');
-});
 
 var cwd = process.cwd();
 
+var subcmd = process.argv[2];
 var subargs = process.argv.slice(3);
-var subcmd = commander.args[0];
 var bin = executable(subcmd);
 
 
