@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var commander = require('commander');
+var markline = require("../index");
+
+commander
+  .usage('[options]')
+  .option('-p, --port [port]', 'server port for preview markline.')
+  .option('-w, --watch', 'watch markdown file change, and auto reload for preview markline.')
+  .parse(process.argv);
+
+
+var cwd = process.cwd();
+
+markline.server(cwd, commander);
+
+// vim:ft=javascript

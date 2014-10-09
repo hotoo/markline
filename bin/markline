@@ -1,34 +1,44 @@
 #!/usr/bin/env node
 
+var path = require("path");
+var fs = require("fs");
 var commander = require('commander');
+var spawn = require('win-spawn');
 var markline = require("../index");
 
 commander
   .version(require('../package').version)
   .usage('[options]')
-  .option('-v, --version', 'output the version number')
-  .option('build', 'build markdown to markline page.')
-  .option('server', 'preview markdown to markline page.')
-  .option('-p, --port [port]', 'server port for preview markline.')
-  .option('-w, --watch', 'watch markdown file change, and auto reload for preview markline.')
-  .option('--dist [dist]', 'build markdown file to markline static site. default is `dist` in current working directory.')
+  //.option('build', 'build markdown to markline page.')
+  //.option('server', 'preview markdown to markline page.')
   .parse(process.argv);
 
+commander.on('--help', function() {
+  console.log('    build     build markdown to markline page.');
+  console.log('    server    preview markdown to markline page.');
+  console.log('');
+});
 
 var cwd = process.cwd();
 
-if (commander.build) {
-  markline.build(cwd, commander);
-  return;
-} else if (commander.server){
-  markline.server(cwd, commander);
-  return;
-}
+var subargs = process.argv.slice(3);
+var subcmd = commander.args[0];
+var bin = executable(subcmd);
 
-// output help and exit if no args found
-if (commander.args.length === 0) {
+
+if (bin) {
+  spawn(bin, subargs, {stdio: 'inherit', customFds: [0, 1, 2]});
+} else {
   commander.help();
 }
 
+function executable(subcmd) {
+  var bin = 'markline-' + subcmd;
+
+  var local = path.join(__dirname, bin);
+  if (fs.existsSync(local)) {
+    return local;
+  }
+}
 
 // vim:ft=javascript

@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+var commander = require('commander');
+var markline = require("../index");
+
+commander
+  .usage('[options]')
+  .option('--dist [dist]', 'build markdown file to markline static site. default is `dist` in current working directory.')
+  .parse(process.argv);
+
+
+var cwd = process.cwd();
+
+markline.build(cwd, commander);
+
+// vim:ft=javascript
