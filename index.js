@@ -47,7 +47,7 @@ function server(cwd, options){
   }
 
   var app = require('http').createServer(function (req, res) {
-    var url = req.url;
+    var url = req.url.split(/[?#]/)[0];
 
     if (url === "/" + fileName) {
       fs.readFile(path.join(cwd, fileName), encode, function(err, markdown){
