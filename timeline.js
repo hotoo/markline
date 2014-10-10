@@ -200,8 +200,6 @@ Markline.prototype.render = function(){
       y: me._element.scrollTop()
     };
 
-    console.log(startingPagePosition)
-    console.log(startingMousePostition)
     me._element.on('mousemove', drag);
   });
   this._element.on('mouseup', function(event){
@@ -212,7 +210,6 @@ Markline.prototype.render = function(){
     event.preventDefault();
     var x = startingPagePosition.x + (startingMousePostition.x - event.clientX);
     var y = startingPagePosition.y + (startingMousePostition.y - event.clientY);
-    console.log("D", x, y)
     me._element.scrollLeft(x);
     me._element.scrollTop(y);
   }
