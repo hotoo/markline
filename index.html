@@ -81,6 +81,8 @@
     seajs.use(["jquery", "markline"], function($, Markline){
 
       function makeMarkline(filename, markdown){
+
+        $("#life").html("");
         var markline = new Markline("#life", markdown);
         markline.render();
 
@@ -89,17 +91,31 @@
         $("#life").show();
       }
 
-      $("#btn-show-example").click(function(){
+      $("#btn-show-example").click(function(evt){
+         evt.stopPropagation();
+         evt.preventDefault();
         var filename = "hotoo.md";
         $.get(filename, function(markdown){
           makeMarkline(filename, markdown);
         });
       })
 
-      $("#file-selector").change(handleFileSelect);
 
-       function handleFileSelect(evt) {
-        var files = evt.target.files; // FileList object
+
+      $("#file-selector").change(function(evt){
+          var files = evt.target.files; // FileList object
+          handleMarkdownFile(files);
+      });
+      window.addEventListener('dragover', function(evt){
+        $("#input-container").show();
+        $("#life").hide();
+      });
+      window.addEventListener('drop', function(evt){
+        var files = evt.dataTransfer.files;
+        handleMarkdownFile(files);
+      }, false);
+
+      function handleMarkdownFile(files) {
 
         // Loop through the FileList and render image files as thumbnails.
         for (var i = 0, f; f = files[i]; i++) {
@@ -115,7 +131,6 @@
           reader.onload = (function(theFile) {
             return function(e) {
 
-              // Render thumbnail.
               var markdown = e.target.result;
               makeMarkline(theFile.name, markdown);
 
