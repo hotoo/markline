@@ -1,16 +1,16 @@
-define("markline/0.3.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
+define("markline/0.5.3/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
   var $ = require("jquery/2.1.1/jquery-debug");
-  var offset_left = 30;
-  var offset_top = 20;
-  var year_width = 100;
-
+  var offset_left = 30; // offset left for group name.
+  var offset_top = 20; // offset top for date header.
+  var year_width = 100; // width per date (year).
   function Markline(element, data) {
     this._element = $(element);
     this.title = data.title || "";
     this.meta = data.meta || {};
     this.body = data.body || {};
   }
-
+  // @param {Number} distance, two date distance milliseconds.
+  // @return {Number} line width.
   function calcLength(distance) {
     return parseInt((distance / (24 * 60 * 60 * 1000)) * year_width / 365.24, 10);
   }
@@ -93,6 +93,7 @@ define("markline/0.3.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(
         var line_length = calcLength(date_end - date_start);
         if (line_length < 8) {
           line_length = 8;
+          //line_start -= 4;
         }
         body_events.push('<li style="margin-left:', line_start, 'px;">', '<div>', '<ol style="width:', line_length, 'px;">');
       },
@@ -104,6 +105,7 @@ define("markline/0.3.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(
         var event_width = calcLength(event["date-end"] - event["date-start"]);
         if (event_width < 8) {
           event_width = 8;
+          event_start -= 4;
         }
         body_events.push('<li style="left:', event_start, 'px;width:', event_width, 'px" title="', event.date, ' ', event.name, '"></li>');
       }
@@ -129,6 +131,34 @@ define("markline/0.3.1/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(
     this._element.append(['<header>', this.title, '</header>'].join(""));
     this._element.append(head_dates.join(""));
     this._element.append(body_events.join(""));
+    // scroll via mouse drag and drop.
+    var startingMousePostition;
+    var startingPagePosition;
+    this._element.on('mousedown', function(event) {
+      startingMousePostition = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      startingPagePosition = {
+        x: me._element.scrollLeft(),
+        y: me._element.scrollTop()
+      };
+      console.log(startingPagePosition)
+      console.log(startingMousePostition)
+      me._element.on('mousemove', drag);
+    });
+    this._element.on('mouseup', function(event) {
+      me._element.off('mousemove', drag);
+    });
+
+    function drag(event) {
+      event.preventDefault();
+      var x = startingPagePosition.x + (startingMousePostition.x - event.clientX);
+      var y = startingPagePosition.y + (startingMousePostition.y - event.clientY);
+      console.log("D", x, y)
+      me._element.scrollLeft(x);
+      me._element.scrollTop(y);
+    }
   };
   module.exports = Markline;
 });
