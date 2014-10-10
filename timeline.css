@@ -3,12 +3,21 @@
   background: #333;
   color: #ccc;
   position: relative;
+  font-family: Avenir, 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', Helvetica, Arial, sans-serif;
   font-size: 13px;
 
   min-width: 500px;
   height: 100%;
   -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;
   overflow: auto;
+
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+
+  cursor: move;
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
 }
 
 .markline > header {
@@ -101,6 +110,9 @@
 .markline > .events ol > li {
   white-space: nowrap;
   position: relative;
+}
+.markline > .events > .groups > ol > li {
+  margin: 2px 0;
 }
 
 .markline > .events > .groups {
