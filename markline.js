@@ -1,6 +1,5 @@
 
 var Timeline = require("./timeline");
-var $ = require("jquery");
 
 var DEFAULT_MENTION_URL = "https://github.com/{@mention}";
 
