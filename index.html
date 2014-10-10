@@ -94,7 +94,7 @@
       $("#btn-show-example").click(function(evt){
          evt.stopPropagation();
          evt.preventDefault();
-        var filename = "hotoo.md";
+        var filename = "example.md";
         $.get(filename, function(markdown){
           makeMarkline(filename, markdown);
         });
