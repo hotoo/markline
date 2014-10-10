@@ -4,6 +4,8 @@
 
 Timeline via Markdown
 
+* [Sample repository on hotoo' life](https://github.com/hotoo/life), and [demo here](http://hotoo.me/life).
+
 ## Install
 
 via npm:
