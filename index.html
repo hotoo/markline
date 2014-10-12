@@ -86,7 +86,7 @@
         var markline = new Markline("#life", markdown);
         markline.render();
 
-        document.title = markline.title || filename;
+        document.title = (markline.title || filename) + " - Markline (line.hotoo.me)";
         $("#input-container").hide();
         $("#life").show();
       }
