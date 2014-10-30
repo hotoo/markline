@@ -14,5 +14,9 @@ seajs.use(['jquery', '../markline'], function($, Markline){
     var markline = new Markline("#markline", markdown);
     markline.render();
   });
+
+  $("body").on('mousemove', function(event){
+    event.preventDefault();
+  });
 });
 ````
