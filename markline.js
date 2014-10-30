@@ -10,7 +10,7 @@ function isString (object){
 function Markline(element, markdown){
   this.element = element;
 
-  var data = parse(markdown);
+  var data = this.data = parse(markdown);
   this.timeline = new Timeline(this.element, data);
 }
 
@@ -216,6 +216,7 @@ function parse(markdown){
 
 Markline.prototype.render = function(){
   this.timeline.render();
+  return this;
 };
 
 module.exports = Markline;

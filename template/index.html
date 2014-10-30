@@ -30,7 +30,9 @@
     seajs.use(["jquery", "markline"], function($, Markline){
       $(function(){
         $.get("{FILE_NANE}", function(markdown){
-          new Markline("#life", markdown).render();
+          var mark = new Markline("#life", markdown);
+          mark.render();
+          document.title = mark.data.title;
         });
       });
     });
