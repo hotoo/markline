@@ -8,7 +8,7 @@ define("markline/0.6.0/markline-debug", ["jquery/2.1.1/jquery-debug"], function(
 
   function Markline(element, markdown) {
     this.element = element;
-    var data = parse(markdown);
+    var data = this.data = parse(markdown);
     this.timeline = new Timeline(this.element, data);
   }
   // @param {String} date
@@ -182,6 +182,7 @@ define("markline/0.6.0/markline-debug", ["jquery/2.1.1/jquery-debug"], function(
   }
   Markline.prototype.render = function() {
     this.timeline.render();
+    return this;
   };
   module.exports = Markline;
 });
