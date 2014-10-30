@@ -32,7 +32,7 @@
         $.get("{FILE_NANE}", function(markdown){
           var mark = new Markline("#life", markdown);
           mark.render();
-          document.title = mark.data.title;
+          document.title = (mark.data.title || "{FILE_NANE}").replace(/<[^>]+>/g, "");
         });
       });
     });
