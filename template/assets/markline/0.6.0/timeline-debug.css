@@ -7,9 +7,10 @@
   font-size: 13px;
 
   min-width: 500px;
+  min-height: 400px;
   height: 100%;
   -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;
-  overflow: auto;
+  overflow: hidden;
 
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -18,9 +19,12 @@
 	cursor: -webkit-grab;
 	cursor: -moz-grab;
 	cursor: grab;
+
+  -webkit-transform:translateZ(0);
 }
 
-.markline > header {
+.markline > header ,
+.markline > footer {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -31,96 +35,116 @@
   z-index: 99;
   cursor: default;
 
-  transition: color 0.5s ease-in-out;
-  -webkit-transition: color 0.5s ease-in-out;
-  -moz-transition: color 0.5s ease-in-out;
-  -o-transition: color 0.5s ease-in-out;
+  transition: color 0.3s ease-in-out;
+  -webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
 }
-.markline > header:hover {
+.markline > header:hover ,
+.markline > footer:hover {
   color: #999;
 }
-.markline > header > a {
+.markline > header > a ,
+.markline > footer > a {
   color: rgba(110,163,208,0.3);/*#6EA3D0;*/
   text-decoration: none;
 
-  transition: color 0.5s ease-in-out;
-  -webkit-transition: color 0.5s ease-in-out;
-  -moz-transition: color 0.5s ease-in-out;
-  -o-transition: color 0.5s ease-in-out;
+  transition: color 0.3s ease-in-out;
+  -webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
 }
-.markline > header > a:hover {
+.markline > header > a:hover ,
+.markline > footer > a:hover {
   border-bottom: 1px solid rgba(110,163,208,0.5); /* #6EA3D0 */
 }
-.markline > header:hover > a {
+.markline > header:hover > a ,
+.markline > footer:hover > a {
   color: #6EA3D0;
 }
+.markline > footer {
+  left: auto;
+  right: 0;
+  margin-right: 10px;
+}
+.markline > footer a.forkme {
+  margin-left: 10px;
+  font-size: 14px;
+}
 
-.markline > .dates {
+.markline > section {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  -webkit-transform:translateZ(0);
+}
+.markline > section > .dates {
   position: absolute;
   top: 0;
   left: 0;
   white-space:nowrap;
   height: 100%;
 }
-.markline > .dates > ol,
-.markline > .dates > ol > li {
+.markline > section > .dates > ol,
+.markline > section > .dates > ol > li {
   list-style: none;
   margin: 0;
   padding: 0;
   height: 100%;
 }
-.markline > .dates > ol > li {
+.markline > section > .dates > ol > li {
   display: inline-block;
   box-sizing: border-box;
   width: 100px;
   border-left: 1px dashed rgba(255, 255, 255, 0.2);
   text-align: center;
 }
-.markline > .dates > ol > li:first-child {
+.markline > section > .dates > ol > li:first-child {
   margin-left: 30px;
 }
-.markline > .dates > ol > li > label,
-.markline > .groups > ol > li > label {
+.markline > section > .dates > ol > li > label,
+.markline > section > .groups > ol > li > label {
   background-color: #333;
   display: block;
-  /*z-index: 103;*/ /* Fixed #10, RENDERING BUGS IN Google Chrome */
+  z-index: 103; /* Fixed #10, RENDERING BUGS IN Google Chrome */
 }
-.markline > .dates > ol > li > label {
+.markline > section > .dates > ol > li > label {
   position: relative;
 }
 
-.markline,
-.markline > .dates > ol > li {
-  min-height: 400px;
-}
-
 /* events */
-.markline > .events {
+.markline > section > .events {
   position: absolute;
-  top: 30px;
+  top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
-.markline > .events ol,
-.markline > .events ol > li {
+.markline > section > .events ol,
+.markline > section > .events ol > li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.markline > .events ol > li {
+.markline > section > .events ol > li {
   white-space: nowrap;
   position: relative;
 }
-.markline > .events > .groups > ol > li {
+.markline > section > .events > .groups > ol > li {
   margin: 2px 0;
 }
 
-.markline > .events > .groups {
+.markline > section > .events > .groups {
   margin: 10px 0;
   padding: 10px 0;
   /*border-top: 1px dashed rgba(255,255,255,0.2);*/
   position: relative;
 }
-.markline > .events > .groups > label {
+.markline > section > .events > .groups > label {
   position: absolute;
   left: -90px;
   top: 100px;
@@ -133,7 +157,7 @@
   background-color: #333;
 }
 
-.markline > .events > .groups > ol > li > div {
+.markline > section > .events > .groups > ol > li > div {
   display: inline-block;
   background: rgba(51,51,51,0.4);
   position: relative;
@@ -142,7 +166,7 @@
   -moz-border-radius:8px; -khtml-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;
 }
 
-.markline > .events > .groups > ol > li > div > ol {
+.markline > section > .events > .groups > ol > li > div > ol {
   white-space: nowrap;
   border: 0;
   background-color: #999;
@@ -153,18 +177,18 @@
   display: inline-block;
   position: relative;
 }
-.markline > .events > .groups > ol > li > div:hover > ol {
+.markline > section > .events > .groups > ol > li > div:hover > ol {
   background-color: #ccc;
 }
-.markline > .events > .groups > ol > li > div > time ,
-.markline > .events > .groups > ol > li > div > label {
+.markline > section > .events > .groups > ol > li > div > time ,
+.markline > section > .events > .groups > ol > li > div > label {
   padding: 2px 5px;
 }
-.markline > .events > .groups > ol > li > div:hover > time,
-.markline > .events > .groups > ol > li > div:hover > label {
+.markline > section > .events > .groups > ol > li > div:hover > time,
+.markline > section > .events > .groups > ol > li > div:hover > label {
   color: #fff;
 }
-.markline > .events > .groups > ol > li > div > ol > li {
+.markline > section > .events > .groups > ol > li > div > ol > li {
   width: 8px;
   height: 8px;
   font-size: 0;
@@ -178,11 +202,11 @@
   text-indent: -10000px;
   cursor: pointer;
 }
-.markline > .events > .groups > ol > li > div:hover > ol > li {
+.markline > section > .events > .groups > ol > li > div:hover > ol > li {
   background-color: #fff;
   z-index: 100;
 }
-.markline > .events > .groups > ol > li > div > ol > li:hover {
+.markline > section > .events > .groups > ol > li > div > ol > li:hover {
   background-color: #333;
   border:1px solid #ccc;
   margin-top: -1px;
@@ -190,18 +214,18 @@
   -moz-border-radius:5px; -khtml-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;
 }
 
-.markline > .events del {
+.markline > section > .events del {
   font-style: italic;
   color: #999;
 }
-.markline > .events a {
+.markline > section > .events a {
   color: #6EA3D0;
   text-decoration: none;
 }
-.markline > .events a:hover {
+.markline > section > .events a:hover {
   border-bottom: 1px solid #6EA3D0;
 }
-.markline > .events a.img {
+.markline > section > .events a.img {
   border: 0;
   display: inline-block;
   width: 12px;
@@ -219,7 +243,7 @@
 .clearfix:after{content:"\0020"; display:block; height:0; clear:both;}
 .clearfix{zoom:1;}
 
-.markline .tags {
+.markline > section .tags {
   height: 20px;
   margin: 0 5px;
   padding: 0 5px 0 15px;
@@ -233,7 +257,7 @@
   color: #eee;
   background-color: #96f;
 }
-.markline .tags:before {
+.markline > section .tags:before {
   position: absolute;
   content: "";
   left: 5px;

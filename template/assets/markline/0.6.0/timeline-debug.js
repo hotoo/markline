@@ -1,4 +1,4 @@
-define("markline/0.5.3/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
+define("markline/0.6.0/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(require, exports, module) {
   var $ = require("jquery/2.1.1/jquery-debug");
   var offset_left = 30; // offset left for group name.
   var offset_top = 20; // offset top for date header.
@@ -112,52 +112,47 @@ define("markline/0.5.3/timeline-debug", ["jquery/2.1.1/jquery-debug"], function(
     });
     var me = this;
     this._element.addClass("markline");
-    this._element.on("scroll", function(evt) {
+    this.title = $(['<header>', this.title, '</header>'].join("")).appendTo(this._element);
+    this.footer = $(['<footer><a class="forkme" href="https://github.com/hotoo/markline" target="_blank">Markline</a></footer>'].join("")).appendTo(this._element);
+    this.container = $('<section></section>').appendTo(this._element);
+    this.header = $(head_dates.join("")).appendTo(this.container);
+    this.body = $(body_events.join("")).appendTo(this.container);
+    this.body.on("scroll", function(evt) {
       var that = $(this);
-      var title = $("> header", this);
-      title.css({
-        "left": that.scrollLeft(),
-        "bottom": -that.scrollTop()
+      //var head = $(".dates", me._element);
+      //head.css({"left": -that.scrollLeft()});
+      me.header.css({
+        "left": -me.body.scrollLeft()
       });
-      var head = $(".dates", this);
-      head.css({
-        "top": that.scrollTop()
-      });
-      var groups = $(".groups > label", this);
+      var groups = $(".groups > label", me._element);
       groups.css({
         "left": that.scrollLeft() - 90
       });
     });
-    this._element.append(['<header>', this.title, '</header>'].join(""));
-    this._element.append(head_dates.join(""));
-    this._element.append(body_events.join(""));
     // scroll via mouse drag and drop.
     var startingMousePostition;
     var startingPagePosition;
-    this._element.on('mousedown', function(event) {
+    this.container.on('mousedown', function(event) {
       startingMousePostition = {
         x: event.clientX,
         y: event.clientY
       };
       startingPagePosition = {
-        x: me._element.scrollLeft(),
-        y: me._element.scrollTop()
+        x: me.body.scrollLeft(),
+        y: me.body.scrollTop()
       };
-      console.log(startingPagePosition)
-      console.log(startingMousePostition)
-      me._element.on('mousemove', drag);
+      me.container.on('mousemove', drag);
     });
-    this._element.on('mouseup', function(event) {
-      me._element.off('mousemove', drag);
+    this.container.on('mouseup', function(event) {
+      me.container.off('mousemove', drag);
     });
 
     function drag(event) {
       event.preventDefault();
       var x = startingPagePosition.x + (startingMousePostition.x - event.clientX);
       var y = startingPagePosition.y + (startingMousePostition.y - event.clientY);
-      console.log("D", x, y)
-      me._element.scrollLeft(x);
-      me._element.scrollTop(y);
+      me.body.scrollLeft(x);
+      me.body.scrollTop(y);
     }
   };
   module.exports = Markline;
