@@ -68,6 +68,7 @@ function parseMarkdown(markdown, meta){
   var RE_STRONG = /(\*\*|__)(.*?)\1/g;
   var RE_EM = /(\*|_)(.*?)\1/g;
   var RE_DELETE = /(\~\~?)(.*?)\1/g;
+  var RE_CODE = /`([^`]+)`/g
   var RE_MENTION = /(^|[^a-zA-Z0-9])@([^\s\t,\(\)\[\]\{\}]+)/g;
   var RE_MENTION_PLACEHOLDER = /\{@mention\}/ig;
   var RE_HASHTAG = /(?:^|[\s\t])\#([^\s\t]+)/g;
@@ -78,6 +79,7 @@ function parseMarkdown(markdown, meta){
   html = html.replace(RE_STRONG, '<strong>$2</strong>');
   html = html.replace(RE_EM, '<em>$2</em>');
   html = html.replace(RE_DELETE, '<del>$2</del>');
+  html = html.replace(RE_CODE, '<code>$1</code>');
 
   // mention:
   if (meta.mention) {

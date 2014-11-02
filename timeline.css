@@ -219,6 +219,15 @@
   font-style: italic;
   color: #999;
 }
+.markline > section > .events code {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.75);
+  background-color: #999;
+  padding: 1px 3px;
+  border-radius: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
 .markline > section > .events a {
   color: #6EA3D0;
   text-decoration: none;

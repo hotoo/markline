@@ -17,6 +17,7 @@
 * 2000 this is **strong**, and __strong2__
 * 2000 this is *em*, and _em2_
 * 2000 this is ~delete~, and ~~delete2~~
+* 2000 this is `code` and `another code`.
 
 ## @Memthon and #HashTags
 
