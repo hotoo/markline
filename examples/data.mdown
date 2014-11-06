@@ -4,7 +4,7 @@
 - date: 2014/09/20
 - author: @hotoo <hotoo.cn@gmail.com>
 - age: show
-- mention: https://twitter.com/{@mention}
++ mention: https://twitter.com/{@mention}
 - tags:
   - job: #fff, #f00
   - life: #fff, rgba(255,0,0,0.5)
@@ -15,9 +15,9 @@
 
 * 2000 this is [link](https://github.com/hotoo/markline), and ![image](https://avatars0.githubusercontent.com/u/143572?v=2&s=460)
 * 2000 this is **strong**, and __strong2__
-* 2000 this is *em*, and _em2_
-* 2000 this is ~delete~, and ~~delete2~~
-* 2000 this is `code` and `another code`.
++ 2000 this is *em*, and _em2_
++ 2000 this is ~delete~, and ~~delete2~~
++ 2000 this is `code` and `another code`.
 
 ## @Memthon and #HashTags
 
