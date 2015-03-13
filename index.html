@@ -71,7 +71,8 @@
 
   <div id="input-container">
     <p>Drag and Drop, or Click and Select markdown file into here.</p>
-    <p>or <a id="btn-show-example" href="javascript:void(0)">Show Example</a>.</p>
+    <p>or <a data-example="example.md" href="javascript:void(0)">Show Example</a>.</p>
+    <p>or <a data-example="life-cost.md?" href="javascript:void(0)">Show Life Cost Example</a>.</p>
     <input type="file" accept="text/markdown,text/x-markdown" id="file-selector" />
     <div id="file-selector-overlay"></div>
   </div>
@@ -91,10 +92,10 @@
         $("#life").show();
       }
 
-      $("#btn-show-example").click(function(evt){
+      $("a[data-example]").click(function(evt){
          evt.stopPropagation();
          evt.preventDefault();
-        var filename = "example.md";
+        var filename = $(this).attr("data-example");
         $.get(filename, function(markdown){
           makeMarkline(filename, markdown);
         });
