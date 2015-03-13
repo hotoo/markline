@@ -2,11 +2,7 @@
 
 ---
 
-@hotoo's Life Timeline.
-
-## Markline
-
-Power by [Markline](https://github.com/hotoo/markline), Star or fork it if you like.
+[Markline](https://github.com/hotoo/markline) sample.
 
 ## BUILD & PUBLISH
 
