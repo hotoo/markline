@@ -1,4 +1,16 @@
-# Markline [![spm version](http://spmjs.io/badge/markline)](http://spmjs.io/package/markline) [![NPM version](https://badge.fury.io/js/markline.png)](http://badge.fury.io/js/markline)
+# Markline
+
+[![NPM version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Coverage Status][coveralls-badge]][coveralls-url]
+
+[npm-badge]: https://img.shields.io/npm/v/markline.svg?style=flat
+[npm-url]: https://www.npmjs.com/package/markline
+[npm-downloads]: http://img.shields.io/npm/dm/markline.svg?style=flat
+[travis-badge]: https://travis-ci.org/hotoo/markline.svg?branch=master
+[travis-url]: https://travis-ci.org/hotoo/markline
+[coveralls-badge]: https://coveralls.io/repos/hotoo/markline/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/r/hotoo/markline
 
 ---
 
