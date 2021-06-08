@@ -19,12 +19,12 @@
     "markline": "./bin/markline"
   },
   "dependencies": {
-    "commander": "~1.1.1",
-    "del": "^0.1.3",
-    "gulp": "^3.8.8",
-    "gulp-replace": "^0.4.0",
+    "commander": "^7.0.0",
+    "del": "^6.0.0",
+    "gulp": "^4.0.0",
+    "gulp-replace": "^1.1.0",
     "socket.io": "^1.1.0",
-    "win-spawn": "^2.0.0"
+    "cross-spawn": "^7.0.0"
   },
   "devDependencies": {
     "mocha": "1.17.1",
