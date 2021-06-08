@@ -22,7 +22,7 @@ function build(cwd, options){
     return;
   }
 
-  del(dist_dir, function(){
+  del(dist_dir).then(function(){
 
     gulp.src(path.join(template_dir, '**'), { dot: true })
       .pipe(replace(/\{FILE_NANE\}/g, path.basename(fileName) ))

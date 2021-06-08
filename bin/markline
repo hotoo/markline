@@ -3,7 +3,7 @@
 var path = require("path");
 var fs = require("fs");
 var commander = require('commander');
-var spawn = require('win-spawn');
+var spawn = require('cross-spawn');
 var markline = require("../index");
 
 commander
