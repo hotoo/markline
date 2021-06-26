@@ -23,7 +23,7 @@
     "del": "^6.0.0",
     "gulp": "^4.0.0",
     "gulp-replace": "^1.1.0",
-    "socket.io": "^1.1.0",
+    "socket.io": "^4.0.0",
     "cross-spawn": "^7.0.0"
   },
   "devDependencies": {
