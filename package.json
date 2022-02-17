@@ -30,21 +30,5 @@
     "mocha": "1.17.1",
     "expect.js": "0.3.1"
   },
-  "spm": {
-    "main": "markline.js",
-    "output": [
-      "timeline.js",
-      "timeline.css"
-    ],
-    "dependencies": {
-      "jquery": "2.1.1"
-    },
-    "devDependencies": {
-      "expect.js": "0.3.1"
-    },
-    "engines": {
-      "seajs": "2.3.0"
-    }
-  },
   "licenses": "MIT"
 }

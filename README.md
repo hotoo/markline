@@ -26,12 +26,6 @@ via npm:
 $ npm install markline -g
 ```
 
-via spm:
-
-```
-$ spm install markline --save
-```
-
 ## Usage
 
 ### for Command Line Interface(CLI):
