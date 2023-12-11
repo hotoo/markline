@@ -17,8 +17,14 @@
 Timeline via Markdown
 
 * [Sample repository on hotoo' life](https://github.com/hotoo/life), and [demo here](https://hotoo.github.io/life/).
-* [Markline for Obsidian.md](https://github.com/hotoo/obsidian-markline)
 
+<p /><br /><p />
+<img alt="obsidian logo" src="https://obsidian.md/images/obsidian-logo-text-purple.svg" width="400" />
+
+### https://github.com/hotoo/obsidian-markline
+
+<p /><br /><p />
+  
 ## Install
 
 via npm:
