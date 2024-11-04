@@ -99,7 +99,7 @@ Markline use subsets of markdown now:
 * 1986 for year.
 * 1986/06 for month.
 * 1986/06/28 is a good day.
-* 1986-06-28 you also can use this date formart.
+* 1986-06-28 you also can use this date format.
 ```
 
 ### Date Ranges
